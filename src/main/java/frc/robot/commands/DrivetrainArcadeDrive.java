@@ -38,26 +38,4 @@ public class DrivetrainArcadeDrive extends CommandBase {
   public boolean isFinished() {
     return false;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}//class
+}
