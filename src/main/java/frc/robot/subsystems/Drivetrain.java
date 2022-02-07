@@ -1,26 +1,34 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
-
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Drivetrain extends SubsystemBase {
+
+  private final double kDrumDiameter = 1.65;
+  private final double TRACK_WIDTH_METERS;
+  private final double WHEEL_DIAMETER = 6.0;
+  private final double WHEEL_DIAMETER_METERS = Units.inchesToMeters(6.0);
+  private final double GEARBOX_RATIO;
+  private final int ENCODER_TICKS_PER_REV = 2048;
   
-    //Left Leader
-    private final WPI_TalonFX LeftMotorOne = new WPI_TalonFX(Constants.LEFT_MOTOR_PORT_ONE);
-    private final WPI_TalonFX LeftMotorTwo = new WPI_TalonFX(Constants.LEFT_MOTOR_PORT_TWO);
-    private final WPI_TalonFX LeftMotorThree = new WPI_TalonFX(Constants.LEFT_MOTOR_PORT_THREE);
-    //Right Leader
-    private final WPI_TalonFX RightMotorOne = new WPI_TalonFX(Constants.RIGHT_MOTOR_PORT_ONE);
-    private final WPI_TalonFX RightMotorTwo = new WPI_TalonFX(Constants.RIGHT_MOTOR_PORT_TWO);
-    private final WPI_TalonFX RightMotorThree = new WPI_TalonFX(Constants.RIGHT_MOTOR_PORT_THREE);
-  
-    private final DifferentialDrive DriveTrain = new DifferentialDrive(LeftMotorOne, RightMotorOne);
+  //Left Leader
+  private final WPI_TalonFX LeftMotorOne = new WPI_TalonFX(Constants.LEFT_MOTOR_PORT_ONE);
+  private final WPI_TalonFX LeftMotorTwo = new WPI_TalonFX(Constants.LEFT_MOTOR_PORT_TWO);
+  private final WPI_TalonFX LeftMotorThree = new WPI_TalonFX(Constants.LEFT_MOTOR_PORT_THREE);
+  //Right Leader
+  private final WPI_TalonFX RightMotorOne = new WPI_TalonFX(Constants.RIGHT_MOTOR_PORT_ONE);
+  private final WPI_TalonFX RightMotorTwo = new WPI_TalonFX(Constants.RIGHT_MOTOR_PORT_TWO);
+  private final WPI_TalonFX RightMotorThree = new WPI_TalonFX(Constants.RIGHT_MOTOR_PORT_THREE);
+
+  private final DifferentialDrive DriveTrain = new DifferentialDrive(LeftMotorOne, RightMotorOne);
 
   public Drivetrain() {
     LeftMotorOne.configFactoryDefault();
@@ -74,5 +82,18 @@ public class Drivetrain extends SubsystemBase {
 
   public void DrivetrainArcadeDrive(double move, double rotate) {
     DriveTrain.arcadeDrive(move, rotate);
+  }
+
+  public void resetEncoders() {
+    LeftMotorOne.setSelectedSensorPosition(0);
+    RightMotorOne.setSelectedSensorPosition(0);
+  }
+  
+  public void setPosition(double positionInInches) {
+    double positionInRotations = UnitConversion.convertPositionInInchesToRotations(positionInInches, kDrumDiameter);
+    double positionInSRXUnits = UnitConversion.convertRotationsToSRXUnits(positionInRotations);
+
+    LeftMotorOne.set(ControlMode.MotionMagic, positionInSRXUnits);
+    RightMotorOne.set(ControlMode.MotionMagic, positionInSRXUnits);
   }
 }
