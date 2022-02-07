@@ -9,14 +9,15 @@ import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.Tools.UnitConversion;
 
 public class Drivetrain extends SubsystemBase {
 
   private final double kDrumDiameter = 1.65;
-  private final double TRACK_WIDTH_METERS;
+  // private final double TRACK_WIDTH_METERS;
   private final double WHEEL_DIAMETER = 6.0;
   private final double WHEEL_DIAMETER_METERS = Units.inchesToMeters(6.0);
-  private final double GEARBOX_RATIO;
+  // private final double GEARBOX_RATIO;
   private final int ENCODER_TICKS_PER_REV = 2048;
   
   //Left Leader
@@ -91,9 +92,9 @@ public class Drivetrain extends SubsystemBase {
   
   public void setPosition(double positionInInches) {
     double positionInRotations = UnitConversion.convertPositionInInchesToRotations(positionInInches, kDrumDiameter);
-    double positionInSRXUnits = UnitConversion.convertRotationsToSRXUnits(positionInRotations);
+    double positionInFXUnits = UnitConversion.convertRotationsToSRXUnits(positionInRotations);
 
-    LeftMotorOne.set(ControlMode.MotionMagic, positionInSRXUnits);
-    RightMotorOne.set(ControlMode.MotionMagic, positionInSRXUnits);
+    LeftMotorOne.set(ControlMode.MotionMagic, positionInFXUnits);
+    RightMotorOne.set(ControlMode.MotionMagic, positionInFXUnits);
   }
 }

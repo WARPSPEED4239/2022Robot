@@ -10,7 +10,9 @@ public final class Constants {
         RIGHT_MOTOR_PORT_TWO = 5,
         RIGHT_MOTOR_PORT_THREE = 6,
 
-        XBOX_CONTROLLER_PORT = 0;
+        XBOX_CONTROLLER_PORT = 0,
+
+        COUNTS_PER_REVOLUTION_ENCODER = 4096;
 
     public static final double
         RAMP_RATE = 0.3;
