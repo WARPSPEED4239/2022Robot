@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.math.util.Units;
+
 public final class Constants {
 
     public static final int 
@@ -13,7 +15,11 @@ public final class Constants {
         XBOX_CONTROLLER_PORT = 0,
 
         COUNTS_PER_REVOLUTION_ENCODER = 4096;
-
+        //TRACK_WIDTH_METERS;
+        //GEARBOX_RATIO;
+          
     public static final double
-        RAMP_RATE = 0.3;
+        RAMP_RATE = 0.3,
+        WHEEL_DIAMETER_METERS = Units.inchesToMeters(6.0),
+        WHEEL_DIAMETER = 6.0;
 }
