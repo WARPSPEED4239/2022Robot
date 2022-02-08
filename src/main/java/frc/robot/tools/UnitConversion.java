@@ -1,5 +1,7 @@
 package frc.robot.tools;
 
+import frc.robot.Constants;
+
 public class UnitConversion {
     public static final double PI = 3.141592;
 
@@ -55,7 +57,7 @@ public class UnitConversion {
         return (positionInDegrees / 360) * SRX_UNITS_PER_ROTATION;
     }
 
-    // public static double targetPosToFXUnits(double targetPositionInMeters) {
-        
-    // }
+    public static double targetPosToFXUnits(double targetPositionInMeters) {
+        return targetPositionInMeters * Constants.COUNTS_PER_REVOLUTION_ENCODER;
+    }
 }
