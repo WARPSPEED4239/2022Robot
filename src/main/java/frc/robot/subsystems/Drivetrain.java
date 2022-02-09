@@ -13,6 +13,12 @@ import frc.robot.Constants;
 import frc.robot.tools.UnitConversion;
 
 public class Drivetrain extends SubsystemBase {
+
+  private final int TIMEOUT_MS = 30;
+  private final double kP = 0.05;// 0.464;//0.297;
+  private final double kI = 0.0;
+  private final double kD = 0.0;
+  private final double kF = 0.0;
   
   //Left Leader
   private final WPI_TalonFX LeftMotorOne = new WPI_TalonFX(Constants.LEFT_MOTOR_PORT_ONE);
@@ -70,18 +76,18 @@ public class Drivetrain extends SubsystemBase {
     LeftMotorOne.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
     LeftMotorTwo.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
 
-    LeftMotorOne.config_kP(0, Constants.kP, Constants.COUNTS_PER_REVOLUTION_ENCODER);
-    LeftMotorOne.config_kI(0, Constants.kI, Constants.COUNTS_PER_REVOLUTION_ENCODER);
-    LeftMotorOne.config_kD(0, Constants.kD, Constants.COUNTS_PER_REVOLUTION_ENCODER);
-    LeftMotorOne.config_kF(0, 0.0, Constants.COUNTS_PER_REVOLUTION_ENCODER);
-    LeftMotorOne.config_IntegralZone(0, 0, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    LeftMotorOne.config_kP(kP, kP, TIMEOUT_MS);
+    LeftMotorOne.config_kI(kI, kI, TIMEOUT_MS);
+    LeftMotorOne.config_kD(kD, kD, TIMEOUT_MS);
+    LeftMotorOne.config_kF(kF, kF, TIMEOUT_MS);
+    LeftMotorOne.config_IntegralZone(0, 0, TIMEOUT_MS);
     LeftMotorOne.selectProfileSlot(0, 0);
 
-    RightMotorOne.config_kP(0, Constants.kP, Constants.COUNTS_PER_REVOLUTION_ENCODER);
-    RightMotorOne.config_kI(0, Constants.kI, Constants.COUNTS_PER_REVOLUTION_ENCODER);
-    RightMotorOne.config_kD(0, Constants.kD, Constants.COUNTS_PER_REVOLUTION_ENCODER);
-    RightMotorOne.config_kF(0, 0.0, Constants.COUNTS_PER_REVOLUTION_ENCODER);
-    RightMotorOne.config_IntegralZone(0, 0, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    RightMotorOne.config_kP(kP, kP, TIMEOUT_MS);
+    RightMotorOne.config_kI(kI, kI, TIMEOUT_MS);
+    RightMotorOne.config_kD(kD, kD, TIMEOUT_MS);
+    RightMotorOne.config_kF(kF, kF, TIMEOUT_MS);
+    RightMotorOne.config_IntegralZone(0, 0, TIMEOUT_MS);
     RightMotorOne.selectProfileSlot(0, 0);
 
     IMU.setYaw(0.0);
