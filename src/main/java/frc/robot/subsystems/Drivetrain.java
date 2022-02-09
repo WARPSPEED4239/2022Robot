@@ -24,7 +24,7 @@ public class Drivetrain extends SubsystemBase {
   private final double kD = 0.0;
   private final double kF = 0.0;
 
-  private final double driveMetersPerTick = (Math.PI * WHEEL_DIAMETER_METERS) / (Constants.COUNTS_PER_REVOLUTION_ENCODER * GEARBOX_RATIO);
+  // private final double driveMetersPerTick = (Math.PI * WHEEL_DIAMETER_METERS) / (Constants.COUNTS_PER_REVOLUTION_ENCODER * GEARBOX_RATIO);
   
   //Left Leader
   private final WPI_TalonFX LeftMotorOne = new WPI_TalonFX(Constants.LEFT_MOTOR_PORT_ONE);
@@ -117,7 +117,7 @@ public class Drivetrain extends SubsystemBase {
   }
   
   public void setPosition(double positionInMeters) {
-    double positionInFXUnits = UnitConversion.targetPosToFXUnits(positionInMeters);
+    double positionInFXUnits = UnitConversion.targetPosToFXUnits(positionInMeters) * GEARBOX_RATIO;
 
     LeftMotorOne.set(ControlMode.MotionMagic, positionInFXUnits);
     RightMotorOne.set(ControlMode.MotionMagic, positionInFXUnits);
