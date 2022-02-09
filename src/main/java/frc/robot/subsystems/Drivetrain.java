@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -23,6 +24,8 @@ public class Drivetrain extends SubsystemBase {
   private final WPI_TalonFX RightMotorThree = new WPI_TalonFX(Constants.RIGHT_MOTOR_PORT_THREE);
 
   private final DifferentialDrive DriveTrain = new DifferentialDrive(LeftMotorOne, RightMotorOne);
+
+  private PigeonIMU IMU = new PigeonIMU(Constants.PIGEON_IMU);
 
   public Drivetrain() {
     LeftMotorOne.configFactoryDefault();
@@ -66,6 +69,24 @@ public class Drivetrain extends SubsystemBase {
 
     LeftMotorOne.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
     LeftMotorTwo.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
+
+    LeftMotorOne.config_kP(0, Constants.kP, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    LeftMotorOne.config_kI(0, Constants.kI, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    LeftMotorOne.config_kD(0, Constants.kD, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    LeftMotorOne.config_kF(0, 0.0, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    LeftMotorOne.config_IntegralZone(0, 0, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    LeftMotorOne.selectProfileSlot(0, 0);
+
+    RightMotorOne.config_kP(0, Constants.kP, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    RightMotorOne.config_kI(0, Constants.kI, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    RightMotorOne.config_kD(0, Constants.kD, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    RightMotorOne.config_kF(0, 0.0, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    RightMotorOne.config_IntegralZone(0, 0, Constants.COUNTS_PER_REVOLUTION_ENCODER);
+    RightMotorOne.selectProfileSlot(0, 0);
+
+    IMU.setYaw(0.0);
+    LeftMotorOne.setSelectedSensorPosition(0);
+    RightMotorOne.setSelectedSensorPosition(0);
 
   }
 
