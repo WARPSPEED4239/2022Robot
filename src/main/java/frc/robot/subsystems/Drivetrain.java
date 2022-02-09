@@ -14,6 +14,7 @@ import frc.robot.tools.UnitConversion;
 
 public class Drivetrain extends SubsystemBase {
 
+  private final double GEARBOX_RATIO = 7.08;
   private final int TIMEOUT_MS = 30;
   private final double kP = 0.05;// 0.464;//0.297;
   private final double kI = 0.0;
@@ -76,17 +77,17 @@ public class Drivetrain extends SubsystemBase {
     LeftMotorOne.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
     LeftMotorTwo.configSelectedFeedbackSensor(FeedbackDevice.IntegratedSensor);
 
-    LeftMotorOne.config_kP(kP, kP, TIMEOUT_MS);
-    LeftMotorOne.config_kI(kI, kI, TIMEOUT_MS);
-    LeftMotorOne.config_kD(kD, kD, TIMEOUT_MS);
-    LeftMotorOne.config_kF(kF, kF, TIMEOUT_MS);
+    LeftMotorOne.config_kP(0, kP, TIMEOUT_MS);
+    LeftMotorOne.config_kI(0, kI, TIMEOUT_MS);
+    LeftMotorOne.config_kD(0, kD, TIMEOUT_MS);
+    LeftMotorOne.config_kF(0, kF, TIMEOUT_MS);
     LeftMotorOne.config_IntegralZone(0, 0, TIMEOUT_MS);
     LeftMotorOne.selectProfileSlot(0, 0);
 
-    RightMotorOne.config_kP(kP, kP, TIMEOUT_MS);
-    RightMotorOne.config_kI(kI, kI, TIMEOUT_MS);
-    RightMotorOne.config_kD(kD, kD, TIMEOUT_MS);
-    RightMotorOne.config_kF(kF, kF, TIMEOUT_MS);
+    RightMotorOne.config_kP(0, kP, TIMEOUT_MS);
+    RightMotorOne.config_kI(0, kI, TIMEOUT_MS);
+    RightMotorOne.config_kD(0, kD, TIMEOUT_MS);
+    RightMotorOne.config_kF(0, kF, TIMEOUT_MS);
     RightMotorOne.config_IntegralZone(0, 0, TIMEOUT_MS);
     RightMotorOne.selectProfileSlot(0, 0);
 
