@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.DrivetrainArcadeDrive;
 import frc.robot.subsystems.Drivetrain;
 
@@ -31,6 +32,6 @@ public class RobotContainer {
   }
 
   public Command getAutonomousCommand() {
-    return null;
+    return new AutonomousCommand(mDriveTrain, 3.0);
   }
 }
