@@ -16,7 +16,7 @@ public final class Constants {
 
         PIGEON_IMU = 1,
         
-        COUNTS_PER_REVOLUTION_ENCODER = 4096,
+        COUNTS_PER_REVOLUTION_ENCODER = 4096;
         //TRACK_WIDTH_METERS;
         //GEARBOX_RATIO;
         
