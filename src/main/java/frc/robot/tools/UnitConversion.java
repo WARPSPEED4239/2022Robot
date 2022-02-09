@@ -57,7 +57,11 @@ public class UnitConversion {
         return (positionInDegrees / 360) * SRX_UNITS_PER_ROTATION;
     }
 
-    public static double targetPosToFXUnits(double targetPositionInMeters) {
+    public static double convertTargetPosToFXUnits(double targetPositionInMeters) {
         return targetPositionInMeters * Constants.COUNTS_PER_REVOLUTION_ENCODER;
+    }
+
+    public static double getCircumference(double diameter) {
+        return Math.PI * diameter;
     }
 }

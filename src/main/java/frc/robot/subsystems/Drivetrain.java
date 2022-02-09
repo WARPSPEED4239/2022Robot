@@ -17,8 +17,8 @@ public class Drivetrain extends SubsystemBase {
 
   private final double GEARBOX_RATIO = 7.08;
   private final int TIMEOUT_MS = 30;
-  private final double WHEEL_DIAMETER_METERS = Units.inchesToMeters(6.0);
   private final double WHEEL_DIAMETER = 6.0;
+  private final double WHEEL_DIAMETER_METERS = Units.inchesToMeters(WHEEL_DIAMETER);
   private final double kP = 0.05;// 0.464;//0.297;
   private final double kI = 0.0;
   private final double kD = 0.0;
@@ -117,7 +117,7 @@ public class Drivetrain extends SubsystemBase {
   }
   
   public void setPosition(double positionInMeters) {
-    double positionInFXUnits = UnitConversion.targetPosToFXUnits(positionInMeters) * GEARBOX_RATIO;
+    double positionInFXUnits = (UnitConversion.getCircumference(WHEEL_DIAMETER_METERS)) / (GEARBOX_RATIO * positionInMeters);
 
     LeftMotorOne.set(ControlMode.MotionMagic, positionInFXUnits);
     RightMotorOne.set(ControlMode.MotionMagic, positionInFXUnits);

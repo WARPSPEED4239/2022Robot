@@ -1,7 +1,5 @@
 package frc.robot;
 
-import edu.wpi.first.math.util.Units;
-
 public final class Constants {
 
     public static final int 
@@ -17,8 +15,6 @@ public final class Constants {
         PIGEON_IMU = 1,
         
         COUNTS_PER_REVOLUTION_ENCODER = 4096;
-        //TRACK_WIDTH_METERS;
-        //GEARBOX_RATIO;
         
     public static final double
         RAMP_RATE = 0.3;
