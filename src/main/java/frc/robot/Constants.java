@@ -21,8 +21,6 @@ public final class Constants {
         //GEARBOX_RATIO;
         
     public static final double
-        RAMP_RATE = 0.3,
-        WHEEL_DIAMETER_METERS = Units.inchesToMeters(6.0),
-        WHEEL_DIAMETER = 6.0;
+        RAMP_RATE = 0.3;
     
 }
