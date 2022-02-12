@@ -62,7 +62,7 @@ public class UnitConversion {
         return (positionInDegrees / 360) * SRX_UNITS_PER_ROTATION;
     }
 
-    public static double getCircumference(double diameter) {
-        return Math.PI * diameter;
+    public static double convertTargetPositionInMetersToFXUnits(double targetPositionInMeters) {
+        return (Math.PI * WHEEL_DIAMETER_METERS) / (GEARBOX_RATIO * targetPositionInMeters);
     }
 }
