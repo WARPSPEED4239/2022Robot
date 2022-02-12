@@ -1,17 +1,16 @@
-package frc.robot.commands;
+package frc.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.tools.UnitConversion;
 
-public class AutonomousCommand extends CommandBase {
+public class MoveOffTarmac extends CommandBase {
   
-  private final Drivetrain mDrivetrain;
-  private final double mPositionInMeters;
+  Drivetrain mDrivetrain;
+  double distanceToMoveOffTarmac = UnitConversion.convertInchesToFeet(130);
 
-  public AutonomousCommand(Drivetrain drivetrain, double positionInMeters) {
-
+  public MoveOffTarmac(Drivetrain drivetrain) {
     mDrivetrain = drivetrain;
-    mPositionInMeters = positionInMeters;
     addRequirements(mDrivetrain);
   }
 
@@ -24,8 +23,8 @@ public class AutonomousCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    mDrivetrain.setPositionMeters(mPositionInMeters);
-
+    mDrivetrain.setPositionFeet(-distanceToMoveOffTarmac);
+    
   }
 
   // Called once the command ends or is interrupted.

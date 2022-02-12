@@ -7,6 +7,7 @@ public class UnitConversion {
 
     public static final double METERS_PER_FEET = 0.3048;
     public static final double FEET_PER_METER = 3.28084;
+    public static final double INCHES_PER_FEET = 0.0833333;
     
     public static final double KILOGRAMS_PER_POUND = 0.453592;
     public static final double POUNDS_PER_KILOGRAM = 2.20462;
@@ -24,6 +25,10 @@ public class UnitConversion {
 
     public static double convertFeetToMeters(double feet) {
         return feet * METERS_PER_FEET;
+    }
+
+    public static double convertInchesToFeet(double inches) {
+        return inches * INCHES_PER_FEET;
     }
 
     public static double convertPoundsToKilograms(double pounds) {
