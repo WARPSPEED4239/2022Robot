@@ -21,13 +21,12 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-    // JoystickButton xButtonA = new JoystickButton(mController, 1);
-    // JoystickButton xButtonB = new JoystickButton(mController, 2);
-    // JoystickButton xButtonX = new JoystickButton(mController, 3);
-    // JoystickButton xButtonY = new JoystickButton(mController, 4);
-    // JoystickButton xButtonRightBumper = new JoystickButton(mController, 5);
-    // JoystickButton xButtonLeftBumper = new JoystickButton(mController, 6);
-
+    JoystickButton xButtonA = new JoystickButton(mController, 1);
+    JoystickButton xButtonB = new JoystickButton(mController, 2);
+    JoystickButton xButtonX = new JoystickButton(mController, 3);
+    JoystickButton xButtonY = new JoystickButton(mController, 4);
+    JoystickButton xButtonRightBumper = new JoystickButton(mController, 5);
+    JoystickButton xButtonLeftBumper = new JoystickButton(mController, 6);
 
   }
 

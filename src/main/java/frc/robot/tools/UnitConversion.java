@@ -1,6 +1,6 @@
 package frc.robot.tools;
 
-import frc.robot.Constants;
+import edu.wpi.first.math.util.Units;
 
 public class UnitConversion {
     public static final double PI = 3.141592;
@@ -10,6 +10,11 @@ public class UnitConversion {
     
     public static final double KILOGRAMS_PER_POUND = 0.453592;
     public static final double POUNDS_PER_KILOGRAM = 2.20462;
+
+    public static final double WHEEL_DIAMETER = 6.0;
+    public static final double WHEEL_DIAMETER_METERS = Units.inchesToMeters(WHEEL_DIAMETER);
+
+    public static final double GEARBOX_RATIO = 7.08;
 
     public static final int SRX_UNITS_PER_ROTATION = 4096;
 

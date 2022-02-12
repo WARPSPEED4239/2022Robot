@@ -6,8 +6,6 @@ import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.sensors.PigeonIMU;
-
-import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -15,10 +13,7 @@ import frc.robot.tools.UnitConversion;
 
 public class Drivetrain extends SubsystemBase {
 
-  private final double GEARBOX_RATIO = 7.08;
   private final int TIMEOUT_MS = 30;
-  private final double WHEEL_DIAMETER = 6.0;
-  private final double WHEEL_DIAMETER_METERS = Units.inchesToMeters(WHEEL_DIAMETER);
   private final double kP = 0.05;// 0.464;//0.297;
   private final double kI = 0.0;
   private final double kD = 0.0;
@@ -116,11 +111,21 @@ public class Drivetrain extends SubsystemBase {
     RightMotorOne.setSelectedSensorPosition(0);
   }
   
-  public void setPosition(double positionInMeters) {
-    double positionInFXUnits = (UnitConversion.getCircumference(WHEEL_DIAMETER_METERS)) / (GEARBOX_RATIO * positionInMeters);
+  public void setPositionMeters(double targetPositionInMeters) {
+    double targetPositionInFXUnits = UnitConversion.convertTargetPositionInMetersToFXUnits(targetPositionInMeters);
 
-    LeftMotorOne.set(ControlMode.MotionMagic, positionInFXUnits);
-    RightMotorOne.set(ControlMode.MotionMagic, positionInFXUnits);
+    LeftMotorOne.set(ControlMode.MotionMagic, targetPositionInFXUnits);
+    RightMotorOne.set(ControlMode.MotionMagic, targetPositionInFXUnits);
+
+  }
+
+  public void setPositionFeet(double targetPositionInFeet) {
+    double targetPositionInMeters = 0;
+    targetPositionInMeters = UnitConversion.convertFeetToMeters(targetPositionInMeters);
+    double targetPositionInFXUnits = UnitConversion.convertTargetPositionInMetersToFXUnits(targetPositionInMeters);
+
+    LeftMotorOne.set(ControlMode.MotionMagic, targetPositionInFXUnits);
+    RightMotorOne.set(ControlMode.MotionMagic, targetPositionInFXUnits);
 
   }
 }
