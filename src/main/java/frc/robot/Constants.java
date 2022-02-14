@@ -9,8 +9,10 @@ public final class Constants {
         RIGHT_MOTOR_PORT_ONE = 4,
         RIGHT_MOTOR_PORT_TWO = 5,
         RIGHT_MOTOR_PORT_THREE = 6,
+        INTAKE_MOTORS_PORT = 0,
         
         XBOX_CONTROLLER_PORT = 0,
+        JOYSTICK_PORT = 1,
 
         PIGEON_IMU = 1,
         

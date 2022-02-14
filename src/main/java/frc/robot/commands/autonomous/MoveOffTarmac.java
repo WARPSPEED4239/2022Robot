@@ -7,7 +7,7 @@ import frc.robot.tools.UnitConversion;
 public class MoveOffTarmac extends CommandBase {
   
   Drivetrain mDrivetrain;
-  double distanceToMoveOffTarmac = UnitConversion.convertInchesToFeet(130);
+  double distanceToMoveOffTarmac = UnitConversion.convertInchesToFeet(100);
 
   public MoveOffTarmac(Drivetrain drivetrain) {
     mDrivetrain = drivetrain;
