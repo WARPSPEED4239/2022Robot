@@ -8,8 +8,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.autonomous.AutonomousCommand;
 import frc.robot.commands.autonomous.SendableChoosers.TargetTask;
+import frc.robot.commands.ConveyorBeltSetSpeed;
 import frc.robot.commands.DrivetrainArcadeDrive;
 import frc.robot.commands.IntakeMotorsSetSpeed;
+import frc.robot.subsystems.ConveyorBelt;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
 
@@ -23,11 +25,13 @@ public class RobotContainer {
   private SendableChooser<TargetTask> targetChooser = new SendableChooser<>();
 
   private final Intake mIntake = new Intake();
+  private final ConveyorBelt mConveyorBelt = new ConveyorBelt();
 
   public RobotContainer() {
     
     mDriveTrain.setDefaultCommand(new DrivetrainArcadeDrive(mDriveTrain, mController));
     mIntake.setDefaultCommand(new IntakeMotorsSetSpeed(mIntake, 0.0));
+	mConveyorBelt.setDefaultCommand(new ConveyorBeltSetSpeed(mConveyorBelt, 0.0));
 
     configureButtonBindings();
 
@@ -64,16 +68,18 @@ public class RobotContainer {
 		jButton11 = new JoystickButton(mJoystick, 11);
 		jButton12 = new JoystickButton(mJoystick, 12);
 
-    jButton3.whileHeld(new IntakeMotorsSetSpeed(mIntake, -1.0));
-
+    	jButton3.whileHeld(new IntakeMotorsSetSpeed(mIntake, -1.0));
 		jButton4.whileHeld(new IntakeMotorsSetSpeed(mIntake, 1.0));
+
+		jButton3.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, -1.0));
+		jButton4.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, 1.0));
 
 
   }
 
   public Command getAutonomousCommand() {
 
-		TargetTask targetTask = targetChooser.getSelected();
+	TargetTask targetTask = targetChooser.getSelected();
 
     return new AutonomousCommand(targetTask, mDriveTrain);
   }

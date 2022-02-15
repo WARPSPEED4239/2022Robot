@@ -7,14 +7,14 @@ import frc.robot.Constants;
 
 public class Intake extends SubsystemBase {
   
-  private WPI_VictorSPX IntakeMoters = new WPI_VictorSPX(Constants.INTAKE_MOTORS_PORT);
+  private WPI_VictorSPX IntakeMotors = new WPI_VictorSPX(Constants.INTAKE_MOTORS_PORT);
 
   public Intake() {
-    IntakeMoters.configFactoryDefault();
-    IntakeMoters.setInverted(false);
-    IntakeMoters.setNeutralMode(NeutralMode.Brake);
-    IntakeMoters.configVoltageCompSaturation(12.0);
-    IntakeMoters.enableVoltageCompensation(true);
+    IntakeMotors.configFactoryDefault();
+    IntakeMotors.setInverted(false);
+    IntakeMotors.setNeutralMode(NeutralMode.Brake);
+    IntakeMotors.configVoltageCompSaturation(12.0);
+    IntakeMotors.enableVoltageCompensation(true);
   }
 
   @Override
@@ -29,6 +29,6 @@ public class Intake extends SubsystemBase {
       speed = -1.0;
     }
     
-    IntakeMoters.set(speed);
+    IntakeMotors.set(speed);
   }
 }
