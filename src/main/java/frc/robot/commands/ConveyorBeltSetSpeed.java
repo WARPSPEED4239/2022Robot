@@ -6,8 +6,8 @@ import frc.robot.subsystems.ConveyorBelt;
 
 public class ConveyorBeltSetSpeed extends CommandBase {
 
-  ConveyorBelt mConveyorBelt;
-  double mSpeed;
+  private final ConveyorBelt mConveyorBelt;
+  private final double mSpeed;
   
   public ConveyorBeltSetSpeed(ConveyorBelt conveyorBelt, double speed) {
 

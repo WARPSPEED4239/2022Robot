@@ -1,26 +1,27 @@
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
-public class IntakeMotorsSetSpeed extends CommandBase {
+public class ShooterSetSpeed extends CommandBase {
   
-  private double mSpeed;
-  private final Intake mIntake;
+  private final Shooter mShooter;
+  private final double mSpeed;
 
-  public IntakeMotorsSetSpeed(Intake intake, double speed) {
+  public ShooterSetSpeed(Shooter shooter, double speed) {
 
-    mIntake = intake;
+    mShooter = shooter;
     mSpeed = speed;
-    addRequirements(mIntake);
+    addRequirements(mShooter);
   }
-  
+
   @Override
   public void initialize() {}
 
   @Override
   public void execute() {
-    mIntake.setPercentOutput(mSpeed);
+    mShooter.ShooterSetSpeed(mSpeed);
   }
 
   @Override

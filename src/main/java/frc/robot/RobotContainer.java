@@ -10,27 +10,30 @@ import frc.robot.commands.autonomous.AutonomousCommand;
 import frc.robot.commands.autonomous.SendableChoosers.TargetTask;
 import frc.robot.commands.ConveyorBeltSetSpeed;
 import frc.robot.commands.DrivetrainArcadeDrive;
-import frc.robot.commands.IntakeMotorsSetSpeed;
+import frc.robot.commands.IntakeSetSpeed;
+import frc.robot.commands.ShooterSetSpeed;
 import frc.robot.subsystems.ConveyorBelt;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
 
 public class RobotContainer {
 
   private final XboxController mController = new XboxController(Constants.XBOX_CONTROLLER_PORT);
   private final Joystick mJoystick = new Joystick(Constants.JOYSTICK_PORT);
-  private final Drivetrain mDriveTrain = new Drivetrain();
-
+  
   private SendableChooser<TargetTask> targetChooser = new SendableChooser<>();
-
+  
+  private final Drivetrain mDriveTrain = new Drivetrain();
   private final Intake mIntake = new Intake();
   private final ConveyorBelt mConveyorBelt = new ConveyorBelt();
+  private final Shooter mShooter = new Shooter();
 
   public RobotContainer() {
     
     mDriveTrain.setDefaultCommand(new DrivetrainArcadeDrive(mDriveTrain, mController));
-    mIntake.setDefaultCommand(new IntakeMotorsSetSpeed(mIntake, 0.0));
+    mIntake.setDefaultCommand(new IntakeSetSpeed(mIntake, 0.0));
 	mConveyorBelt.setDefaultCommand(new ConveyorBeltSetSpeed(mConveyorBelt, 0.0));
 
     configureButtonBindings();
@@ -68,8 +71,10 @@ public class RobotContainer {
 		jButton11 = new JoystickButton(mJoystick, 11);
 		jButton12 = new JoystickButton(mJoystick, 12);
 
-    	jButton3.whileHeld(new IntakeMotorsSetSpeed(mIntake, -1.0));
-		jButton4.whileHeld(new IntakeMotorsSetSpeed(mIntake, 1.0));
+		jButton1.whileHeld(new ShooterSetSpeed(mShooter, 0.8));
+
+    	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -1.0));
+		jButton4.whileHeld(new IntakeSetSpeed(mIntake, 1.0));
 
 		jButton3.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, -1.0));
 		jButton4.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, 1.0));

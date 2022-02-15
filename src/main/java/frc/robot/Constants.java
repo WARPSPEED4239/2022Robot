@@ -11,7 +11,10 @@ public final class Constants {
         RIGHT_MOTOR_PORT_THREE = 6,
 
         INTAKE_MOTORS_PORT = 9999,
+
         CONVEYOR_BELT_MOTOR_PORT = 8888,
+
+        SHOOTER_MOTOR_PORT = 7777,
         
         XBOX_CONTROLLER_PORT = 0,
         JOYSTICK_PORT = 1,

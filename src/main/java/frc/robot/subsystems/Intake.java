@@ -7,7 +7,7 @@ import frc.robot.Constants;
 
 public class Intake extends SubsystemBase {
   
-  private WPI_VictorSPX IntakeMotors = new WPI_VictorSPX(Constants.INTAKE_MOTORS_PORT);
+  private final WPI_VictorSPX IntakeMotors = new WPI_VictorSPX(Constants.INTAKE_MOTORS_PORT);
 
   public Intake() {
     IntakeMotors.configFactoryDefault();
@@ -22,7 +22,7 @@ public class Intake extends SubsystemBase {
     
   }
 
-  public void setPercentOutput(double speed) {
+  public void IntakeSetSpeed(double speed) {
     if (speed > 1.0) {
       speed = 1.0;
     } else if (speed < -1.0) {

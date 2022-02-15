@@ -7,7 +7,7 @@ import frc.robot.Constants;
 
 public class ConveyorBelt extends SubsystemBase {
   
-  private WPI_VictorSPX ConveyorBeltMotors = new WPI_VictorSPX(Constants.CONVEYOR_BELT_MOTOR_PORT);
+  private final WPI_VictorSPX ConveyorBeltMotors = new WPI_VictorSPX(Constants.CONVEYOR_BELT_MOTOR_PORT);
 
   public ConveyorBelt() {
     ConveyorBeltMotors.configFactoryDefault();

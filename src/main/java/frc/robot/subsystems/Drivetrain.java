@@ -32,7 +32,7 @@ public class Drivetrain extends SubsystemBase {
 
   private final DifferentialDrive DriveTrain = new DifferentialDrive(LeftMotorOne, RightMotorOne);
 
-  private PigeonIMU IMU = new PigeonIMU(Constants.PIGEON_IMU);
+  private final PigeonIMU IMU = new PigeonIMU(Constants.PIGEON_IMU);
 
   public Drivetrain() {
     LeftMotorOne.configFactoryDefault();
