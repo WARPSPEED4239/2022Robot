@@ -15,6 +15,11 @@ public final class Constants {
         CONVEYOR_BELT_MOTOR_PORT = 8888,
 
         SHOOTER_MOTOR_PORT = 7777,
+
+        FEEDER_WHEELS_PORT = 4444,
+
+        INTAKE_SOLENOID_FORWARD_PORT = 6666,
+        INTAKE_SOLENOID_REVERSE_PORT = 5555,
         
         XBOX_CONTROLLER_PORT = 0,
         JOYSTICK_PORT = 1,

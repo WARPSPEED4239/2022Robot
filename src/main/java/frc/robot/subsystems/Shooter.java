@@ -2,13 +2,13 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Shooter extends SubsystemBase {
   
-  private final WPI_VictorSPX ShooterMotor = new WPI_VictorSPX(Constants.SHOOTER_MOTOR_PORT);
+  private final WPI_TalonSRX ShooterMotor = new WPI_TalonSRX(Constants.SHOOTER_MOTOR_PORT);
 
   public Shooter() {
     ShooterMotor.configFactoryDefault();

@@ -10,11 +10,15 @@ import frc.robot.commands.autonomous.AutonomousCommand;
 import frc.robot.commands.autonomous.SendableChoosers.TargetTask;
 import frc.robot.commands.ConveyorBeltSetSpeed;
 import frc.robot.commands.DrivetrainArcadeDrive;
+import frc.robot.commands.FeederWheelsSetSpeed;
+import frc.robot.commands.IntakePistonsSetState;
 import frc.robot.commands.IntakeSetSpeed;
 import frc.robot.commands.ShooterSetSpeed;
 import frc.robot.subsystems.ConveyorBelt;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.FeederWheels;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.IntakePistons;
 import frc.robot.subsystems.Shooter;
 
 
@@ -25,16 +29,24 @@ public class RobotContainer {
   
   private SendableChooser<TargetTask> targetChooser = new SendableChooser<>();
   
+  //motors
   private final Drivetrain mDriveTrain = new Drivetrain();
   private final Intake mIntake = new Intake();
   private final ConveyorBelt mConveyorBelt = new ConveyorBelt();
   private final Shooter mShooter = new Shooter();
+  private final FeederWheels mFeederWheels = new FeederWheels();
+
+  //pistons
+  private final IntakePistons mIntakePistons = new IntakePistons();
 
   public RobotContainer() {
     
     mDriveTrain.setDefaultCommand(new DrivetrainArcadeDrive(mDriveTrain, mController));
     mIntake.setDefaultCommand(new IntakeSetSpeed(mIntake, 0.0));
 	mConveyorBelt.setDefaultCommand(new ConveyorBeltSetSpeed(mConveyorBelt, 0.0));
+	mFeederWheels.setDefaultCommand(new FeederWheelsSetSpeed(mFeederWheels, 0.0));
+
+	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
 
     configureButtonBindings();
 
@@ -78,6 +90,11 @@ public class RobotContainer {
 
 		jButton3.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, -1.0));
 		jButton4.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, 1.0));
+
+		jButton3.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, -0.8));
+		jButton4.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, 0.8));
+
+		jButton5.toggleWhenPressed(new IntakePistonsSetState(mIntakePistons, true));
 
 
   }
