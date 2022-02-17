@@ -10,15 +10,19 @@ import frc.robot.commands.autonomous.AutonomousCommand;
 import frc.robot.commands.autonomous.SendableChoosers.TargetTask;
 import frc.robot.commands.ConveyorBeltSetSpeed;
 import frc.robot.commands.DrivetrainArcadeDrive;
+import frc.robot.commands.DrivetrainShifterSetState;
 import frc.robot.commands.FeederWheelsSetSpeed;
 import frc.robot.commands.IntakePistonsSetState;
 import frc.robot.commands.IntakeSetSpeed;
+import frc.robot.commands.RampSetState;
 import frc.robot.commands.ShooterSetSpeed;
 import frc.robot.subsystems.ConveyorBelt;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.DrivetrainShifter;
 import frc.robot.subsystems.FeederWheels;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.IntakePistons;
+import frc.robot.subsystems.Ramp;
 import frc.robot.subsystems.Shooter;
 
 
@@ -38,6 +42,8 @@ public class RobotContainer {
 
   //pistons
   private final IntakePistons mIntakePistons = new IntakePistons();
+  private final Ramp mRamp = new Ramp();
+  private final DrivetrainShifter mShifter = new DrivetrainShifter();
 
   public RobotContainer() {
     
@@ -47,6 +53,8 @@ public class RobotContainer {
 	mFeederWheels.setDefaultCommand(new FeederWheelsSetSpeed(mFeederWheels, 0.0));
 
 	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
+	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
+	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, false));
 
     configureButtonBindings();
 
@@ -83,6 +91,9 @@ public class RobotContainer {
 		jButton11 = new JoystickButton(mJoystick, 11);
 		jButton12 = new JoystickButton(mJoystick, 12);
 
+		xButtonA.whenPressed(new DrivetrainShifterSetState(mShifter, false));
+		xButtonB.whenPressed(new DrivetrainShifterSetState(mShifter, true));
+
 		jButton1.whileHeld(new ShooterSetSpeed(mShooter, 0.8));
 
     	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -1.0));
@@ -95,6 +106,8 @@ public class RobotContainer {
 		jButton4.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, 0.8));
 
 		jButton5.toggleWhenPressed(new IntakePistonsSetState(mIntakePistons, true));
+
+		jButton10.whileHeld(new RampSetState(mRamp, true));
 
 
   }
