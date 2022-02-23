@@ -12,8 +12,8 @@ public class FeederWheels extends SubsystemBase {
   
   public FeederWheels() {
     FeederWheelMotor.configFactoryDefault();
-    FeederWheelMotor.setInverted(false);
-    FeederWheelMotor.setNeutralMode(NeutralMode.Brake);
+    FeederWheelMotor.setInverted(true);
+    FeederWheelMotor.setNeutralMode(NeutralMode.Coast);
     FeederWheelMotor.configVoltageCompSaturation(12.0);
     FeederWheelMotor.enableVoltageCompensation(true);
   }

@@ -8,11 +8,12 @@ import frc.robot.Constants;
 public class Intake extends SubsystemBase {
   
   private final WPI_TalonSRX IntakeMotors = new WPI_TalonSRX(Constants.INTAKE_MOTORS_PORT);
+  
 
   public Intake() {
     IntakeMotors.configFactoryDefault();
     IntakeMotors.setInverted(false);
-    IntakeMotors.setNeutralMode(NeutralMode.Brake);
+    IntakeMotors.setNeutralMode(NeutralMode.Coast);
     IntakeMotors.configVoltageCompSaturation(12.0);
     IntakeMotors.enableVoltageCompensation(true);
   }

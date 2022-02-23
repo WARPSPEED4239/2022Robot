@@ -9,14 +9,19 @@ import frc.robot.Constants;
 public class Shooter extends SubsystemBase {
   
   private final WPI_TalonSRX ShooterMotor = new WPI_TalonSRX(Constants.SHOOTER_MOTOR_PORT);
-
+  private final WPI_TalonSRX ShooterMotor2 = new WPI_TalonSRX(Constants.SHOOTER_MOTOR_PORT2);
   public Shooter() {
+    ShooterMotor2.follow(ShooterMotor);
     ShooterMotor.configFactoryDefault();
-    ShooterMotor.setInverted(false);
+    ShooterMotor.setInverted(true);
+    ShooterMotor2.setInverted(true);
     ShooterMotor.setNeutralMode(NeutralMode.Coast);
     ShooterMotor.configVoltageCompSaturation(12.0);
-    ShooterMotor.enableVoltageCompensation(true);
+    ShooterMotor.enableVoltageCompensation(false);
   }
+  
+
+
 
   @Override
   public void periodic() {

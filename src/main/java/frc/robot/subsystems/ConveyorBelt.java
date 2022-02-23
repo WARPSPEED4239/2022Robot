@@ -11,8 +11,8 @@ public class ConveyorBelt extends SubsystemBase {
 
   public ConveyorBelt() {
     ConveyorBeltMotors.configFactoryDefault();
-    ConveyorBeltMotors.setInverted(false);
-    ConveyorBeltMotors.setNeutralMode(NeutralMode.Brake);
+    ConveyorBeltMotors.setInverted(true);
+    ConveyorBeltMotors.setNeutralMode(NeutralMode.Coast);
     ConveyorBeltMotors.configVoltageCompSaturation(12.0);
     ConveyorBeltMotors.enableVoltageCompensation(true);
   }

@@ -2,6 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.simulation.JoystickSim;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -14,14 +15,17 @@ import frc.robot.commands.DrivetrainShifterSetState;
 import frc.robot.commands.FeederWheelsSetSpeed;
 import frc.robot.commands.IntakePistonsSetState;
 import frc.robot.commands.IntakeSetSpeed;
+import frc.robot.commands.PneumaticControllerCompressorSetState;
 import frc.robot.commands.RampSetState;
 import frc.robot.commands.ShooterSetSpeed;
+import frc.robot.commands.ShooterSetSpeedThrottle;
 import frc.robot.subsystems.ConveyorBelt;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.DrivetrainShifter;
 import frc.robot.subsystems.FeederWheels;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.IntakePistons;
+import frc.robot.subsystems.PneumaticController;
 import frc.robot.subsystems.Ramp;
 import frc.robot.subsystems.Shooter;
 
@@ -44,6 +48,7 @@ public class RobotContainer {
   private final IntakePistons mIntakePistons = new IntakePistons();
   private final Ramp mRamp = new Ramp();
   private final DrivetrainShifter mShifter = new DrivetrainShifter();
+  private final PneumaticController mPneumaticController = new PneumaticController();
 
   public RobotContainer() {
     
@@ -51,10 +56,12 @@ public class RobotContainer {
     mIntake.setDefaultCommand(new IntakeSetSpeed(mIntake, 0.0));
 	mConveyorBelt.setDefaultCommand(new ConveyorBeltSetSpeed(mConveyorBelt, 0.0));
 	mFeederWheels.setDefaultCommand(new FeederWheelsSetSpeed(mFeederWheels, 0.0));
+	mShooter.setDefaultCommand(new ShooterSetSpeed(mShooter, 0.0));
 
 	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
 	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
 	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, false));
+	mPneumaticController.setDefaultCommand(new PneumaticControllerCompressorSetState(mPneumaticController, true));
 
     configureButtonBindings();
 
@@ -94,18 +101,20 @@ public class RobotContainer {
 		xButtonA.whenPressed(new DrivetrainShifterSetState(mShifter, false));
 		xButtonB.whenPressed(new DrivetrainShifterSetState(mShifter, true));
 
-		jButton1.whileHeld(new ShooterSetSpeed(mShooter, 0.8));
+		jButton1.whileHeld(new ShooterSetSpeedThrottle(mShooter, mJoystick));
 
-    	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -1.0));
-		jButton4.whileHeld(new IntakeSetSpeed(mIntake, 1.0));
+    	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -0.65));
+		jButton4.whileHeld(new IntakeSetSpeed(mIntake, 0.65));
 
-		jButton3.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, -1.0));
-		jButton4.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, 1.0));
+		jButton3.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, -0.65));
+		jButton4.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, 0.65));
 
-		jButton3.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, -0.8));
-		jButton4.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, 0.8));
+		jButton3.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, -0.65));
+		jButton4.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, 0.65));
 
 		jButton5.toggleWhenPressed(new IntakePistonsSetState(mIntakePistons, true));
+
+		jButton9.whileHeld(new PneumaticControllerCompressorSetState(mPneumaticController, false));
 
 		jButton10.whileHeld(new RampSetState(mRamp, true));
 

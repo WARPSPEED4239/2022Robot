@@ -22,6 +22,7 @@ public class ShooterSetSpeed extends CommandBase {
   @Override
   public void execute() {
     mShooter.ShooterSetSpeed(mSpeed);
+    System.out.println(mSpeed);
   }
 
   @Override

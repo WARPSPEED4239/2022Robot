@@ -9,7 +9,7 @@ import frc.robot.Constants;
 
 public class Ramp extends SubsystemBase {
   
-  private final DoubleSolenoid IntakePistons = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.INTAKE_SOLENOID_FORWARD_PORT, Constants.INTAKE_SOLENOID_REVERSE_PORT);
+  private final DoubleSolenoid IntakePistons = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.RAMP_SOLENOID_FORWARD_PORT, Constants.RAMP_SOLENOID_REVERSE_PORT);
 
   public Ramp() {}
 

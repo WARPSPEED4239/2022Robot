@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
+
 public final class Constants {
 
     public static final int 
@@ -10,18 +12,19 @@ public final class Constants {
         RIGHT_MOTOR_PORT_TWO = 5,
         RIGHT_MOTOR_PORT_THREE = 6,
 
-        INTAKE_MOTORS_PORT = 49,
+        INTAKE_MOTORS_PORT = 11,
 
-        CONVEYOR_BELT_MOTOR_PORT = 50,
+        
+        CONVEYOR_BELT_MOTOR_PORT = 15,
 
-        SHOOTER_MOTOR_PORT = 51,
+        SHOOTER_MOTOR_PORT = 17,
+        SHOOTER_MOTOR_PORT2 = 18,
+        FEEDER_WHEELS_PORT = 16,
 
-        FEEDER_WHEELS_PORT = 52,
-
-        INTAKE_SOLENOID_FORWARD_PORT = 1,
+        INTAKE_SOLENOID_FORWARD_PORT = 3,
         INTAKE_SOLENOID_REVERSE_PORT = 2,
 
-        RAMP_SOLENOID_FORWARD_PORT = 3,
+        RAMP_SOLENOID_FORWARD_PORT = 1,
         RAMP_SOLENOID_REVERSE_PORT = 4,
 
         SHIFTER_SOLENOID_FORWARD_PORT = 5,
@@ -31,7 +34,7 @@ public final class Constants {
         JOYSTICK_PORT = 1,
 
         PIGEON_IMU = 0,
-        
+
         COUNTS_PER_REVOLUTION_ENCODER = 4096;
         
     public static final double
