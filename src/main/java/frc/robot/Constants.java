@@ -1,7 +1,5 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
-
 public final class Constants {
 
     public static final int 
@@ -34,6 +32,8 @@ public final class Constants {
         JOYSTICK_PORT = 1,
 
         PIGEON_IMU = 0,
+
+        COMPRESSOR = 0,
 
         COUNTS_PER_REVOLUTION_ENCODER = 4096;
         
