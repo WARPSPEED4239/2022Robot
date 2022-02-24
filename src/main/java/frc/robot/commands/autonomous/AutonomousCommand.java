@@ -1,9 +1,12 @@
 package frc.robot.commands.autonomous;
 
+import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
+import frc.robot.commands.DrivetrainNoSensors;
 import frc.robot.commands.autonomous.SendableChoosers.TargetTask;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.tools.UnitConversion;
 
 public class AutonomousCommand extends SequentialCommandGroup {
   
@@ -12,7 +15,11 @@ public class AutonomousCommand extends SequentialCommandGroup {
 
     switch (targetTask) {
       case MoveOffTarmac:
-        addCommands(new MoveOffTarmac(drivetrain));
+        addCommands(new DrivetrainDriveDistance(drivetrain, UnitConversion.convertFeetToMeters(6)));
+        break;
+      case DriveBackwardsNoSensors:
+        new ParallelRaceGroup(new DrivetrainNoSensors(drivetrain, -0.5, 0.0), 
+                              new WaitCommand(5));
         break;
       case DoNothing:
         addCommands(new WaitCommand(15.0));

@@ -2,15 +2,15 @@ package frc.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.tools.UnitConversion;
 
-public class MoveOffTarmac extends CommandBase {
+public class DrivetrainDriveDistance extends CommandBase {
   
   Drivetrain mDrivetrain;
-  double distanceToMoveOffTarmac = UnitConversion.convertInchesToFeet(6);
+  double mDistanceInMeters;
 
-  public MoveOffTarmac(Drivetrain drivetrain) {
+  public DrivetrainDriveDistance(Drivetrain drivetrain, double distanceInMeters) {
     mDrivetrain = drivetrain;
+    mDistanceInMeters = distanceInMeters;
     addRequirements(mDrivetrain);
   }
 
@@ -21,7 +21,7 @@ public class MoveOffTarmac extends CommandBase {
   
   @Override
   public void execute() {
-    mDrivetrain.setPositionFeet(-distanceToMoveOffTarmac);
+    mDrivetrain.setPositionFeet(mDistanceInMeters);
     
   }
 
