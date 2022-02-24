@@ -33,8 +33,6 @@ public final class Constants {
 
         PIGEON_IMU = 0,
 
-        COMPRESSOR = 0,
-
         COUNTS_PER_REVOLUTION_ENCODER = 4096;
         
     public static final double

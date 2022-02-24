@@ -14,7 +14,6 @@ import frc.robot.commands.DrivetrainShifterSetState;
 import frc.robot.commands.FeederWheelsSetSpeed;
 import frc.robot.commands.IntakePistonsSetState;
 import frc.robot.commands.IntakeSetSpeed;
-import frc.robot.commands.PneumaticControllerCompressorSetState;
 import frc.robot.commands.RampSetState;
 import frc.robot.commands.ShooterSetSpeed;
 import frc.robot.commands.ShooterSetSpeedThrottle;
@@ -24,7 +23,6 @@ import frc.robot.subsystems.DrivetrainShifter;
 import frc.robot.subsystems.FeederWheels;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.IntakePistons;
-import frc.robot.subsystems.PneumaticController;
 import frc.robot.subsystems.Ramp;
 import frc.robot.subsystems.Shooter;
 
@@ -47,7 +45,6 @@ public class RobotContainer {
   private final IntakePistons mIntakePistons = new IntakePistons();
   private final Ramp mRamp = new Ramp();
   private final DrivetrainShifter mShifter = new DrivetrainShifter();
-  private final PneumaticController mPneumaticController = new PneumaticController();
 
   public RobotContainer() {
     
@@ -60,7 +57,6 @@ public class RobotContainer {
 	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
 	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
 	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, false));
-	mPneumaticController.setDefaultCommand(new PneumaticControllerCompressorSetState(mPneumaticController, true));
 
     configureButtonBindings();
 
@@ -112,8 +108,6 @@ public class RobotContainer {
 		jButton4.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, 0.65));
 
 		jButton5.toggleWhenPressed(new IntakePistonsSetState(mIntakePistons, true));
-
-		jButton9.whileHeld(new PneumaticControllerCompressorSetState(mPneumaticController, false));
 
 		jButton10.whileHeld(new RampSetState(mRamp, true));
 
