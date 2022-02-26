@@ -24,9 +24,6 @@ public class DrivetrainArcadeDrive extends CommandBase {
     double move = mController.getRightTriggerAxis() - mController.getLeftTriggerAxis();
     double rotate = (.533333 * Math.pow(mController.getLeftX(), 3) + .466666 * mController.getLeftX());
 
-    mController.setRumble(RumbleType.kRightRumble, mController.getRightTriggerAxis());
-    mController.setRumble(RumbleType.kLeftRumble, mController.getLeftTriggerAxis());
-
     mDrivetrain.DrivetrainArcadeDrive(move, rotate);
   }
 

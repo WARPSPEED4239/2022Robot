@@ -99,9 +99,6 @@ public class RobotContainer {
 		xButtonA.whenPressed(new DrivetrainShifterSetState(mShifter, false));
 		xButtonB.whenPressed(new DrivetrainShifterSetState(mShifter, true));
 
-		xButtonA.whenPressed(new DrivetrainShifterSetState(mShifter, false));
-		xButtonB.whenPressed(new DrivetrainShifterSetState(mShifter, true));
-
 		jButton1.whileHeld(new ShooterSetSpeedThrottle(mShooter, mJoystick));
 
     	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -0.65));
@@ -116,7 +113,7 @@ public class RobotContainer {
 
 		jButton5.toggleWhenPressed(new IntakePistonsSetState(mIntakePistons, true));
 
-		jButton10.toggleWhenPressed(new RampSetState(mRamp, true));
+		jButton2.whileHeld(new RampSetState(mRamp, true));
 
   }
 
