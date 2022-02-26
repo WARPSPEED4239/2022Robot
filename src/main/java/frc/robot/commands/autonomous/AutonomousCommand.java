@@ -15,7 +15,7 @@ public class AutonomousCommand extends SequentialCommandGroup {
 
     switch (targetTask) {
       case MoveOffTarmac:
-        addCommands(new DrivetrainDriveDistance(drivetrain, UnitConversion.convertFeetToMeters(6)));
+        addCommands(new DrivetrainDriveDistance(drivetrain, UnitConversion.convertFeetToMeters(-7.5)));
         break;
       case DriveBackwardsNoSensors:
         new ParallelRaceGroup(new DrivetrainNoSensors(drivetrain, -0.5, 0.0), 

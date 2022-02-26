@@ -28,7 +28,6 @@ import frc.robot.subsystems.Limelight;
 import frc.robot.subsystems.Ramp;
 import frc.robot.subsystems.Shooter;
 
-
 public class RobotContainer {
 
   private final XboxController mController = new XboxController(Constants.XBOX_CONTROLLER_PORT);
@@ -100,6 +99,9 @@ public class RobotContainer {
 		xButtonA.whenPressed(new DrivetrainShifterSetState(mShifter, false));
 		xButtonB.whenPressed(new DrivetrainShifterSetState(mShifter, true));
 
+		xButtonA.whenPressed(new DrivetrainShifterSetState(mShifter, false));
+		xButtonB.whenPressed(new DrivetrainShifterSetState(mShifter, true));
+
 		jButton1.whileHeld(new ShooterSetSpeedThrottle(mShooter, mJoystick));
 
     	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -0.65));
@@ -114,8 +116,7 @@ public class RobotContainer {
 
 		jButton5.toggleWhenPressed(new IntakePistonsSetState(mIntakePistons, true));
 
-		jButton10.whileHeld(new RampSetState(mRamp, true));
-
+		jButton10.toggleWhenPressed(new RampSetState(mRamp, true));
 
   }
 
