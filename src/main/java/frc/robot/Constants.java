@@ -27,7 +27,7 @@ public final class Constants {
         RAMP_SOLENOID_REVERSE_PORT = 5,
 
         CLIMBER_SOLENOID_FORWARD_PORT = 6,
-        CLIMBER_SOLENOID_REVERSE_PORT = 6,
+        CLIMBER_SOLENOID_REVERSE_PORT = 7,
         
         XBOX_CONTROLLER_PORT = 0,
         JOYSTICK_PORT = 1,
