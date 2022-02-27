@@ -20,20 +20,12 @@ public class ShooterSetSpeedThrottle extends CommandBase {
 
   @Override
   public void execute() {
-    double speed = 0.0;
     double speedFromJoystick = mJoystick.getThrottle(); // 1 to -1
-    speedFromJoystick *= -1;                                         // -1 to 1
-    speedFromJoystick += 1;                                          // 0 to 2
-    speedFromJoystick *= 0.35;                                       // 0 to 0.7
-    speedFromJoystick += 0.70;                                       // 0.3 to 1
-    speedFromJoystick -= 0.40;
-    if(speedFromJoystick < 0.3) {
-      speed = 0.0;
-    } else {
-
-      speed = speedFromJoystick;
-    }
-    mShooter.ShooterSetSpeed(speed);
+    speedFromJoystick *= -1;                            // -1 to 1
+    speedFromJoystick += 1;                             // 0 to 2
+    speedFromJoystick *= 0.5;                           // 0 to 1
+    
+    mShooter.ShooterSetSpeed(speedFromJoystick);
   }
 
   @Override

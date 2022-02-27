@@ -14,8 +14,8 @@ public final class Constants {
         CONVEYOR_BELT_MOTOR_PORT = 15,
         FEEDER_WHEELS_PORT = 16,
 
-        SHOOTER_MOTOR_PORT = 17,
-        SHOOTER_MOTOR_PORT2 = 18,
+        SHOOTER_MOTOR_PORT = 18,
+        SHOOTER_MOTOR_PORT2 = 17,
 
         SHIFTER_SOLENOID_FORWARD_PORT = 0,
         SHIFTER_SOLENOID_REVERSE_PORT = 1,

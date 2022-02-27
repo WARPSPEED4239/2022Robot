@@ -1,13 +1,13 @@
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.autonomous.AutonomousCommand;
-import frc.robot.commands.autonomous.SendableChoosers.TargetTask;
 import frc.robot.commands.ConveyorBeltSetSpeed;
 import frc.robot.commands.DrivetrainArcadeDrive;
 import frc.robot.commands.DrivetrainShifterSetState;
@@ -16,8 +16,11 @@ import frc.robot.commands.IntakePistonsSetState;
 import frc.robot.commands.IntakeSetSpeed;
 import frc.robot.commands.LimelightDriversMode;
 import frc.robot.commands.RampSetState;
-import frc.robot.commands.ShooterSetSpeed;
 import frc.robot.commands.ShooterSetSpeedThrottle;
+import frc.robot.commands.ShooterSetVelocity;
+import frc.robot.commands.automated.VisionTracking;
+import frc.robot.commands.autonomous.AutonomousCommand;
+import frc.robot.commands.autonomous.SendableChoosers.TargetTask;
 import frc.robot.subsystems.ConveyorBelt;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.DrivetrainShifter;
@@ -53,7 +56,7 @@ public class RobotContainer {
     mIntake.setDefaultCommand(new IntakeSetSpeed(mIntake, 0.0));
 	mConveyorBelt.setDefaultCommand(new ConveyorBeltSetSpeed(mConveyorBelt, 0.0));
 	mFeederWheels.setDefaultCommand(new FeederWheelsSetSpeed(mFeederWheels, 0.0));
-	mShooter.setDefaultCommand(new ShooterSetSpeed(mShooter, 0.0));
+	mShooter.setDefaultCommand(new ShooterSetSpeedThrottle(mShooter, mJoystick));
 
 	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
 	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
@@ -62,17 +65,21 @@ public class RobotContainer {
 
     configureButtonBindings();
 
-    targetChooser.setDefaultOption("Move Off Tarmac", TargetTask.MoveOffTarmac);
-    targetChooser.addOption("Do Nothing", TargetTask.DoNothing);
-	targetChooser.addOption("Drive Backwords", TargetTask.DriveBackwardsNoSensors);
+    targetChooser.setDefaultOption("Do Nothing", TargetTask.DoNothing);
+	targetChooser.addOption("Move Off Tarmac", TargetTask.MoveOffTarmac);
+	targetChooser.addOption("Move Backwards No Sensors", TargetTask.DriveBackwardsNoSensors);
     SmartDashboard.putData(targetChooser);
+	
+	UsbCamera cam0 = CameraServer.startAutomaticCapture();
+	cam0.setResolution(320, 240);
+	cam0.setFPS(10);
   }
 
   private void configureButtonBindings() {
 		JoystickButton xButtonA, xButtonB, xButtonX, xButtonY, xButtonLeftBumper, xButtonRightBumper, xButtonLeftStick,
 				xButtonRightStick;
 		JoystickButton jButton1, jButton2, jButton3, jButton4, jButton5, jButton6, jButton7, jButton8, jButton9,
-				jButton10, jButton11, jButton12;
+				jButton10, jButton11;
 
 		xButtonA = new JoystickButton(mController, 1);
 		xButtonB = new JoystickButton(mController, 2);
@@ -94,16 +101,17 @@ public class RobotContainer {
 		jButton9 = new JoystickButton(mJoystick, 9);
 		jButton10 = new JoystickButton(mJoystick, 10);
 		jButton11 = new JoystickButton(mJoystick, 11);
-		jButton12 = new JoystickButton(mJoystick, 12);
 
 		xButtonA.whenPressed(new DrivetrainShifterSetState(mShifter, false));
 		xButtonB.whenPressed(new DrivetrainShifterSetState(mShifter, true));
 
-		jButton1.whileHeld(new ShooterSetSpeedThrottle(mShooter, mJoystick));
+		//jButton1.whileHeld(new ShooterSetSpeedThrottle(mShooter, mJoystick));
+		//jButton1.whileHeld(new ShooterSetVelocity(mShooter, 3600));
+		jButton1.whileHeld(new VisionTracking(mDriveTrain, mLimelight, mShooter, mController, mJoystick));
+		jButton2.whileHeld(new RampSetState(mRamp, true));
 
     	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -0.65));
 		jButton4.whileHeld(new IntakeSetSpeed(mIntake, 0.65));
-
 
 		jButton3.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, -0.65));
 		jButton4.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, 0.65));
@@ -111,16 +119,14 @@ public class RobotContainer {
 		jButton3.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, -0.65));
 		jButton4.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, 0.65));
 
-		jButton5.toggleWhenPressed(new IntakePistonsSetState(mIntakePistons, true));
-
-		jButton2.whileHeld(new RampSetState(mRamp, true));
-
+		jButton5.whenPressed(new IntakePistonsSetState(mIntakePistons, false));
+		jButton6.whenPressed(new IntakePistonsSetState(mIntakePistons, true));
   }
 
   public Command getAutonomousCommand() {
-
 	TargetTask targetTask = targetChooser.getSelected();
 
     return new AutonomousCommand(targetTask, mDriveTrain);
   }
 }
+
