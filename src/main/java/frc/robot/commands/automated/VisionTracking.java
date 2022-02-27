@@ -1,6 +1,5 @@
 package frc.robot.commands.automated;
 
-import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -46,7 +45,7 @@ public class VisionTracking extends CommandBase {
       double rotate;
       double tx = mLimelight.getTx();
       double ty = mLimelight.getTy();
-      double distanceToGoal = ((kHeightOfGoalInches - kHeightOfLimelightInches) / (Math.tan(Math.toRadians(kAngleOfLimelightDegrees)  + Math.toRadians(ty)))); 
+      double distanceToGoal = ((kHeightOfGoalInches - kHeightOfLimelightInches) / (Math.tan(Math.toRadians(kAngleOfLimelightDegrees)  + Math.toRadians(ty)))); // TODO Maybe fix this calculation
       
       if (Math.abs(tx) < 0.5) {
           rotate = 0.0;

@@ -17,6 +17,8 @@ public final class Constants {
         SHOOTER_MOTOR_PORT = 18,
         SHOOTER_MOTOR_PORT2 = 17,
 
+        CLIMBER_MOTOR_PORT = -1, // TODO MAP THIS NUMBER
+
         SHIFTER_SOLENOID_FORWARD_PORT = 0,
         SHIFTER_SOLENOID_REVERSE_PORT = 1,
 

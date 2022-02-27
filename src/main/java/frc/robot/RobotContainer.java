@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.ClimberPistonsSetState;
+import frc.robot.commands.ClimberSetSpeed;
 import frc.robot.commands.ConveyorBeltSetSpeed;
 import frc.robot.commands.DrivetrainArcadeDrive;
 import frc.robot.commands.DrivetrainShifterSetState;
@@ -17,10 +19,11 @@ import frc.robot.commands.IntakeSetSpeed;
 import frc.robot.commands.LimelightDriversMode;
 import frc.robot.commands.RampSetState;
 import frc.robot.commands.ShooterSetSpeedThrottle;
-import frc.robot.commands.ShooterSetVelocity;
 import frc.robot.commands.automated.VisionTracking;
 import frc.robot.commands.autonomous.AutonomousCommand;
 import frc.robot.commands.autonomous.SendableChoosers.TargetTask;
+import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.ClimberPistons;
 import frc.robot.subsystems.ConveyorBelt;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.DrivetrainShifter;
@@ -32,7 +35,6 @@ import frc.robot.subsystems.Ramp;
 import frc.robot.subsystems.Shooter;
 
 public class RobotContainer {
-
   private final XboxController mController = new XboxController(Constants.XBOX_CONTROLLER_PORT);
   private final Joystick mJoystick = new Joystick(Constants.JOYSTICK_PORT);
   
@@ -43,24 +45,27 @@ public class RobotContainer {
   private final ConveyorBelt mConveyorBelt = new ConveyorBelt();
   private final Shooter mShooter = new Shooter();
   private final FeederWheels mFeederWheels = new FeederWheels();
+  private final Climber mClimber = new Climber();
 
   private final IntakePistons mIntakePistons = new IntakePistons();
   private final Ramp mRamp = new Ramp();
   private final DrivetrainShifter mShifter = new DrivetrainShifter();
+  private final ClimberPistons mClimberPistons = new ClimberPistons();
 
   private final Limelight mLimelight = new Limelight();
 
   public RobotContainer() {
-    
     mDriveTrain.setDefaultCommand(new DrivetrainArcadeDrive(mDriveTrain, mController));
     mIntake.setDefaultCommand(new IntakeSetSpeed(mIntake, 0.0));
 	mConveyorBelt.setDefaultCommand(new ConveyorBeltSetSpeed(mConveyorBelt, 0.0));
 	mFeederWheels.setDefaultCommand(new FeederWheelsSetSpeed(mFeederWheels, 0.0));
 	mShooter.setDefaultCommand(new ShooterSetSpeedThrottle(mShooter, mJoystick));
+	mClimber.setDefaultCommand(new ClimberSetSpeed(mClimber, 0.0));
 
 	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
 	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
 	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, false));
+	mClimberPistons.setDefaultCommand(new ClimberPistonsSetState(mClimberPistons, false));
 	mLimelight.setDefaultCommand(new LimelightDriversMode(mLimelight));
 
     configureButtonBindings();
@@ -121,6 +126,12 @@ public class RobotContainer {
 
 		jButton5.whenPressed(new IntakePistonsSetState(mIntakePistons, false));
 		jButton6.whenPressed(new IntakePistonsSetState(mIntakePistons, true));
+
+		jButton9.whileHeld(new ClimberSetSpeed(mClimber, -1.0));
+		jButton10.whileHeld(new ClimberSetSpeed(mClimber, 1.0));
+
+		jButton11.toggleWhenPressed(new ClimberPistonsSetState(mClimberPistons, true));
+		// jButton12 is used to toggle manual control for vison tracking in VisionTracking.java
   }
 
   public Command getAutonomousCommand() {
