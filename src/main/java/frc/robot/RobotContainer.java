@@ -60,7 +60,7 @@ public class RobotContainer {
 	mConveyorBelt.setDefaultCommand(new ConveyorBeltSetSpeed(mConveyorBelt, 0.0));
 	mFeederWheels.setDefaultCommand(new FeederWheelsSetSpeed(mFeederWheels, 0.0));
 	mShooter.setDefaultCommand(new ShooterSetSpeedThrottle(mShooter, mJoystick));
-	mClimber.setDefaultCommand(new ClimberSetSpeed(mClimber, 0.0));
+	mClimber.setDefaultCommand(new ClimberSetSpeed(mClimber, mJoystick, 0.0));
 
 	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
 	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
@@ -85,6 +85,8 @@ public class RobotContainer {
 				xButtonRightStick;
 		JoystickButton jButton1, jButton2, jButton3, jButton4, jButton5, jButton6, jButton7, jButton8, jButton9,
 				jButton10, jButton11;
+			JoystickButton joyButton1, joyButton2, joyButton3, joyButton4, joyButton5, joyButton6, joyButton7, joyButton8, joyButton9,
+				joyButton10, joyButton11;
 
 		xButtonA = new JoystickButton(mController, 1);
 		xButtonB = new JoystickButton(mController, 2);
@@ -110,10 +112,9 @@ public class RobotContainer {
 		xButtonA.whenPressed(new DrivetrainShifterSetState(mShifter, false));
 		xButtonB.whenPressed(new DrivetrainShifterSetState(mShifter, true));
 
-		//jButton1.whileHeld(new ShooterSetSpeedThrottle(mShooter, mJoystick));
-		//jButton1.whileHeld(new ShooterSetVelocity(mShooter, 3600));
+		jButton1.whileHeld(new RampSetState(mRamp, true));
+
 		jButton1.whileHeld(new VisionTracking(mDriveTrain, mLimelight, mShooter, mController, mJoystick));
-		jButton2.whileHeld(new RampSetState(mRamp, true));
 
     	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -0.65));
 		jButton4.whileHeld(new IntakeSetSpeed(mIntake, 0.65));
@@ -127,8 +128,8 @@ public class RobotContainer {
 		jButton5.whenPressed(new IntakePistonsSetState(mIntakePistons, false));
 		jButton6.whenPressed(new IntakePistonsSetState(mIntakePistons, true));
 
-		jButton9.whileHeld(new ClimberSetSpeed(mClimber, -1.0));
-		jButton10.whileHeld(new ClimberSetSpeed(mClimber, 1.0));
+		// jButton7.whileHeld(new ClimberSetSpeed(mClimber, mJoystick, -1.0));
+		// jButton8.whileHeld(new ClimberSetSpeed(mClimber, mJoystick, 1.0));
 
 		jButton11.toggleWhenPressed(new ClimberPistonsSetState(mClimberPistons, true));
 		// jButton12 is used to toggle manual control for vison tracking in VisionTracking.java
