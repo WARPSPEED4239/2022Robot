@@ -8,8 +8,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.ClimberPistonsSetState;
-import frc.robot.commands.ClimberSetSpeed;
 import frc.robot.commands.ConveyorBeltSetSpeed;
 import frc.robot.commands.DrivetrainArcadeDrive;
 import frc.robot.commands.DrivetrainShifterSetState;
@@ -22,8 +20,6 @@ import frc.robot.commands.ShooterSetSpeedThrottle;
 import frc.robot.commands.automated.VisionTracking;
 import frc.robot.commands.autonomous.AutonomousCommand;
 import frc.robot.commands.autonomous.SendableChoosers.TargetTask;
-import frc.robot.subsystems.Climber;
-import frc.robot.subsystems.ClimberPistons;
 import frc.robot.subsystems.ConveyorBelt;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.DrivetrainShifter;
@@ -45,12 +41,10 @@ public class RobotContainer {
   private final ConveyorBelt mConveyorBelt = new ConveyorBelt();
   private final Shooter mShooter = new Shooter();
   private final FeederWheels mFeederWheels = new FeederWheels();
-  private final Climber mClimber = new Climber();
 
   private final IntakePistons mIntakePistons = new IntakePistons();
   private final Ramp mRamp = new Ramp();
   private final DrivetrainShifter mShifter = new DrivetrainShifter();
-  private final ClimberPistons mClimberPistons = new ClimberPistons();
 
   private final Limelight mLimelight = new Limelight();
 
@@ -60,12 +54,10 @@ public class RobotContainer {
 	mConveyorBelt.setDefaultCommand(new ConveyorBeltSetSpeed(mConveyorBelt, 0.0));
 	mFeederWheels.setDefaultCommand(new FeederWheelsSetSpeed(mFeederWheels, 0.0));
 	mShooter.setDefaultCommand(new ShooterSetSpeedThrottle(mShooter, mJoystick));
-	mClimber.setDefaultCommand(new ClimberSetSpeed(mClimber, mJoystick, 0.0));
 
 	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
 	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
 	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, false));
-	mClimberPistons.setDefaultCommand(new ClimberPistonsSetState(mClimberPistons, false));
 	mLimelight.setDefaultCommand(new LimelightDriversMode(mLimelight));
 
     configureButtonBindings();
@@ -129,8 +121,6 @@ public class RobotContainer {
 
 		// jButton7.whileHeld(new ClimberSetSpeed(mClimber, mJoystick, -1.0));
 		// jButton8.whileHeld(new ClimberSetSpeed(mClimber, mJoystick, 1.0));
-
-		jButton11.toggleWhenPressed(new ClimberPistonsSetState(mClimberPistons, true));
 		// jButton12 is used to toggle manual control for vison tracking in VisionTracking.java
   }
 
