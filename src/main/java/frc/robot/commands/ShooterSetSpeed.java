@@ -9,7 +9,6 @@ public class ShooterSetSpeed extends CommandBase {
   private final double mSpeed;
 
   public ShooterSetSpeed(Shooter shooter, double speed) {
-
     mShooter = shooter;
     mSpeed = speed;
     addRequirements(mShooter);

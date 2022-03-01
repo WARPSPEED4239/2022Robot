@@ -18,9 +18,7 @@ public class ConveyorBelt extends SubsystemBase {
   }
 
   @Override
-  public void periodic() {
-    
-  }
+  public void periodic() {}
 
   public void ConveyorBeltSetSpeed(double speed) {
     if (speed > 1.0) {

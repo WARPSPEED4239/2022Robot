@@ -10,7 +10,6 @@ public class ShooterSetSpeedThrottle extends CommandBase {
   private final Joystick mJoystick;
 
   public ShooterSetSpeedThrottle(Shooter shooter, Joystick joystick) {
-
     mShooter = shooter;
     mJoystick = joystick;
     addRequirements(mShooter);

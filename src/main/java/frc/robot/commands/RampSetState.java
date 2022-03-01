@@ -11,7 +11,6 @@ public class RampSetState extends CommandBase {
   public RampSetState(Ramp ramp, boolean pistonState) {
     mRamp = ramp;
     mPistonState = pistonState;
-
     addRequirements(mRamp);
   }
 

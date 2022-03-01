@@ -50,7 +50,6 @@ public class Shooter extends SubsystemBase {
     } else if (speed < -1.0) {
       speed = -1.0;
     }
-    
     ShooterMotor.set(speed);
   }
 

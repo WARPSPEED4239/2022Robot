@@ -9,7 +9,6 @@ public class IntakeSetSpeed extends CommandBase {
   private final double mSpeed;
 
   public IntakeSetSpeed(Intake intake, double speed) {
-
     mIntake = intake;
     mSpeed = speed;
     addRequirements(mIntake);

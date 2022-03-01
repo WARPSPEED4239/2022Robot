@@ -9,10 +9,8 @@ public class ConveyorBeltSetSpeed extends CommandBase {
   private final double mSpeed;
   
   public ConveyorBeltSetSpeed(ConveyorBelt conveyorBelt, double speed) {
-
     mConveyorBelt = conveyorBelt;
     mSpeed = speed;
-
     addRequirements(mConveyorBelt);
   }
 

@@ -9,13 +9,11 @@ import frc.robot.Constants;
 public class DrivetrainShifter extends SubsystemBase {
 
   private final DoubleSolenoid Shifter = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.SHIFTER_SOLENOID_FORWARD_PORT, Constants.SHIFTER_SOLENOID_REVERSE_PORT);
-  
+
   public DrivetrainShifter() {}
 
   @Override
-  public void periodic() {
-    
-  }
+  public void periodic() {}
 
   public void setPistonState (boolean pistonState) {
     if (pistonState) {

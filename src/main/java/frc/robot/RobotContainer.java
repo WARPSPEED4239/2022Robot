@@ -33,19 +33,15 @@ import frc.robot.subsystems.Shooter;
 public class RobotContainer {
   private final XboxController mController = new XboxController(Constants.XBOX_CONTROLLER_PORT);
   private final Joystick mJoystick = new Joystick(Constants.JOYSTICK_PORT);
-  
   private SendableChooser<TargetTask> targetChooser = new SendableChooser<>();
-  
   private final Drivetrain mDriveTrain = new Drivetrain();
   private final Intake mIntake = new Intake();
   private final ConveyorBelt mConveyorBelt = new ConveyorBelt();
   private final Shooter mShooter = new Shooter();
   private final FeederWheels mFeederWheels = new FeederWheels();
-
   private final IntakePistons mIntakePistons = new IntakePistons();
   private final Ramp mRamp = new Ramp();
   private final DrivetrainShifter mShifter = new DrivetrainShifter();
-
   private final Limelight mLimelight = new Limelight();
 
   public RobotContainer() {

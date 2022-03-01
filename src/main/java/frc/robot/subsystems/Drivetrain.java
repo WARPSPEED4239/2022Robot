@@ -12,13 +12,11 @@ import frc.robot.Constants;
 import frc.robot.tools.UnitConversion;
 
 public class Drivetrain extends SubsystemBase {
-
   private final int TIMEOUT_MS = 30;
   private final double kP = 0.05;// 0.464;//0.297;
   private final double kI = 0.0;
   private final double kD = 0.0;
   private final double kF = 0.0;
-
   // private final double driveMetersPerTick = (Math.PI * WHEEL_DIAMETER_METERS) / (Constants.COUNTS_PER_REVOLUTION_ENCODER * GEARBOX_RATIO);
   
   //Left Leader
@@ -29,9 +27,7 @@ public class Drivetrain extends SubsystemBase {
   private final WPI_TalonFX RightMotorOne = new WPI_TalonFX(Constants.RIGHT_MOTOR_PORT_ONE);
   private final WPI_TalonFX RightMotorTwo = new WPI_TalonFX(Constants.RIGHT_MOTOR_PORT_TWO);
   private final WPI_TalonFX RightMotorThree = new WPI_TalonFX(Constants.RIGHT_MOTOR_PORT_THREE);
-
   private final DifferentialDrive DriveTrain = new DifferentialDrive(LeftMotorOne, RightMotorOne);
-
   private final PigeonIMU IMU = new PigeonIMU(Constants.PIGEON_IMU);
 
   public Drivetrain() {
@@ -98,9 +94,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
   @Override
-  public void periodic() {
-    
-  }
+  public void periodic() {}
 
   public void DrivetrainArcadeDrive(double move, double rotate) {
     DriveTrain.arcadeDrive(move, rotate);
