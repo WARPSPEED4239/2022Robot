@@ -51,7 +51,7 @@ public class RobotContainer {
 	mFeederWheels.setDefaultCommand(new FeederWheelsSetSpeed(mFeederWheels, 0.0));
 	mShooter.setDefaultCommand(new ShooterSetSpeedThrottle(mShooter, mJoystick));
 
-	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, true));
+	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
 	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
 	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, false));
 	mLimelight.setDefaultCommand(new LimelightDriversMode(mLimelight));
