@@ -51,7 +51,7 @@ public class RobotContainer {
 	mFeederWheels.setDefaultCommand(new FeederWheelsSetSpeed(mFeederWheels, 0.0));
 	mShooter.setDefaultCommand(new ShooterSetSpeedThrottle(mShooter, mJoystick));
 
-	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
+	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, true));
 	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
 	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, false));
 	mLimelight.setDefaultCommand(new LimelightDriversMode(mLimelight));
@@ -109,8 +109,8 @@ public class RobotContainer {
 		jButton3.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, -0.65));
 		jButton4.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, 0.65));
 
-		jButton3.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, -0.65));
-		jButton4.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, 0.65));
+		jButton3.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, -0.45));
+		jButton4.whileHeld(new FeederWheelsSetSpeed(mFeederWheels, 0.45));
 
 		jButton5.whenPressed(new IntakePistonsSetState(mIntakePistons, false));
 		jButton6.whenPressed(new IntakePistonsSetState(mIntakePistons, true));

@@ -18,9 +18,7 @@ public class FeederWheels extends SubsystemBase {
   }
 
   @Override
-  public void periodic() {
-    
-  }
+  public void periodic() {}
 
   public void FeederWheelsSetSpeed(double speed) {
     if (speed > 1.0) {

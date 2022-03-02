@@ -8,12 +8,10 @@ public class Limelight extends SubsystemBase {
   
   private NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
   
-  public Limelight() {
-  }
+  public Limelight() {}
 
   @Override
-  public void periodic() {
-  }
+  public void periodic() {}
 
   public NetworkTable getLimelightTable() {
     return table;

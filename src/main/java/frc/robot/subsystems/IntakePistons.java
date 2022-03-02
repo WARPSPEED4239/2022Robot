@@ -11,14 +11,10 @@ public class IntakePistons extends SubsystemBase {
   
   private final DoubleSolenoid IntakePistons = new DoubleSolenoid(PneumaticsModuleType.CTREPCM, Constants.INTAKE_SOLENOID_FORWARD_PORT, Constants.INTAKE_SOLENOID_REVERSE_PORT);
 
-  public IntakePistons() {
-
-  }
+  public IntakePistons() {}
 
   @Override
-  public void periodic() {
-    
-  }
+  public void periodic() {}
 
   public void setPistonsState (boolean pistonState) {
     if (pistonState) {

@@ -30,7 +30,7 @@ public class Shooter extends SubsystemBase {
     ShooterMotor.setSensorPhase(true);
 
     ShooterMotor.config_kF(0, 0.025);
-    ShooterMotor.config_kP(0, 0.2);
+    ShooterMotor.config_kP(0, 0.25);
     ShooterMotor.config_kI(0, 0.0);
     ShooterMotor.config_kD(0, 0.0);
 

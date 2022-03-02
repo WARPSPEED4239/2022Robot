@@ -2,6 +2,7 @@ package frc.robot.commands.automated;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Limelight;
@@ -15,10 +16,10 @@ public class VisionTracking extends CommandBase {
   private final XboxController mController;
   private final Joystick mJoystick;
 
-  private final double kPDrivetrain = 0.1; // TODO TUNE
+  private final double kPDrivetrain = 0.03; // TODO TUNE
   private final double kHeightOfGoalInches = 103.0;
   private final double kHeightOfLimelightInches = 26.5;
-  private final double kAngleOfLimelightDegrees = 22.5;
+  private final double kAngleOfLimelightDegrees = 28.77;
 
   public VisionTracking(Drivetrain drivetrain, Limelight limelight, Shooter shooter, XboxController controller, Joystick joystick) {
     mDrivetrain = drivetrain;
@@ -46,7 +47,8 @@ public class VisionTracking extends CommandBase {
       double tx = mLimelight.getTx();
       double ty = mLimelight.getTy();
       double distanceToGoal = ((kHeightOfGoalInches - kHeightOfLimelightInches) / (Math.tan(Math.toRadians(kAngleOfLimelightDegrees)  + Math.toRadians(ty)))); // TODO Maybe fix this calculation
-      
+      SmartDashboard.putNumber("distance", distanceToGoal);
+
       if (Math.abs(tx) < 0.5) {
           rotate = 0.0;
       } else {
@@ -58,7 +60,9 @@ public class VisionTracking extends CommandBase {
       // 2700 RPM at 12 feet
       // 3700 RPM at 17 feet
       // RPM = (constant * distance) + offset
-      double RPM = (16.666667 * distanceToGoal) + 300;
+      // double RPM = 3400;
+      double RPM = (12.76 * distanceToGoal) + 1500;
+      SmartDashboard.putNumber("RPM", RPM);
       mShooter.setVelocity(RPM);
     } else {
       double move = mController.getRightTriggerAxis() - mController.getLeftTriggerAxis();

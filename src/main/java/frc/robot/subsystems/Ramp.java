@@ -13,9 +13,7 @@ public class Ramp extends SubsystemBase {
   public Ramp() {}
 
   @Override
-  public void periodic() {
-    
-  }
+  public void periodic() {}
 
   public void setPistonState (boolean pistonState) {
     if (pistonState) {
