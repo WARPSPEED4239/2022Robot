@@ -16,7 +16,7 @@ public class VisionTracking extends CommandBase {
   private final XboxController mController;
   private final Joystick mJoystick;
 
-  private final double kPDrivetrain = 0.03;
+  private final double kPDrivetrain = 0.0335;
   private final double kHeightOfGoalInches = 103.0;
   private final double kHeightOfLimelightInches = 26.5;
   private final double kAngleOfLimelightDegrees = 28.77;
@@ -60,7 +60,7 @@ public class VisionTracking extends CommandBase {
       // 2700 RPM at 12 feet
       // 3700 RPM at 17 feet
       // RPM = (constant * distance) + offset
-      double RPM = (12.76 * distanceToGoal) + 1500;
+      double RPM = (12.76 * distanceToGoal) + 1550;
       SmartDashboard.putNumber("RPM", RPM);
       mShooter.setVelocity(RPM);
     } else {

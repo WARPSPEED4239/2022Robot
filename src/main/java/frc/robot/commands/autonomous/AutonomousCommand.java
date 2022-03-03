@@ -18,8 +18,8 @@ public class AutonomousCommand extends SequentialCommandGroup {
         addCommands(new DrivetrainDriveDistance(drivetrain, UnitConversion.convertFeetToMeters(-7.5)));
         break;
       case DriveBackwardsNoSensors:
-        new ParallelRaceGroup(new DrivetrainNoSensors(drivetrain, -0.5, 0.0), 
-                              new WaitCommand(2));
+        addCommands(new ParallelRaceGroup(new DrivetrainNoSensors(drivetrain, -0.5, 0.0), 
+                                          new WaitCommand(2)));
         break;
       case DoNothing:
         addCommands(new WaitCommand(15.0));
