@@ -60,8 +60,9 @@ public class RobotContainer {
     configureButtonBindings();
 
     targetChooser.setDefaultOption("Do Nothing", TargetTask.DoNothing);
-	targetChooser.addOption("Move Off Tarmac", TargetTask.MoveOffTarmac);
+	//targetChooser.addOption("Move Off Tarmac", TargetTask.MoveOffTarmac);
 	targetChooser.addOption("Move Backwards No Sensors", TargetTask.DriveBackwardsNoSensors);
+	targetChooser.addOption("Shoot Move Backwards No Sensors", TargetTask.ShootDriveBackNoSensors);
     SmartDashboard.putData(targetChooser);
 	
 	UsbCamera cam0 = CameraServer.startAutomaticCapture();
@@ -124,7 +125,7 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
 	TargetTask targetTask = targetChooser.getSelected();
 
-    return new AutonomousCommand(targetTask, mDriveTrain);
+    return new AutonomousCommand(targetTask, mDriveTrain, mLimelight, mShooter, mRamp);
   }
 }
 
