@@ -54,7 +54,8 @@ public class VisionTrackingAuto extends CommandBase {
       // 2700 RPM at 12 feet
       // 3700 RPM at 17 feet
       // RPM = (constant * distance) + offset
-      double RPM = (12.76 * distanceToGoal) + 1550;
+      //double RPM = (12.76 * distanceToGoal) + 1550;
+      double RPM = 2975;
       SmartDashboard.putNumber("RPM", RPM);
       mShooter.setVelocity(RPM);
     }
