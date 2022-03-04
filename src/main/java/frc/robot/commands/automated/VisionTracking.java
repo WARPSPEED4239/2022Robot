@@ -27,7 +27,7 @@ public class VisionTracking extends CommandBase {
     mShooter = shooter;
     mController = controller;
     mJoystick = joystick;
-    addRequirements(mDrivetrain, mLimelight);
+    addRequirements(mDrivetrain, mLimelight, mShooter);
   }
 
   @Override
