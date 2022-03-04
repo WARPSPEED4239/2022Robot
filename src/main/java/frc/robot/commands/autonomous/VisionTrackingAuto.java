@@ -21,7 +21,7 @@ public class VisionTrackingAuto extends CommandBase {
     mDrivetrain = drivetrain;
     mLimelight = limelight;
     mShooter = shooter;
-    addRequirements(mDrivetrain, mLimelight);
+    addRequirements(mDrivetrain, mLimelight, mShooter);
   }
 
   @Override
