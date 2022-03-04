@@ -33,7 +33,7 @@ public class AutonomousCommand extends SequentialCommandGroup {
                                           new RampSetState(ramp, true),
                                           new WaitCommand(1.0)),
                     new ParallelRaceGroup(new DrivetrainNoSensors(drivetrain, -0.75, 0.0), 
-                                          new WaitCommand(1.5)));
+                                          new WaitCommand(1.0)));
         break;
       case DoNothing:
         addCommands(new WaitCommand(15.0));
