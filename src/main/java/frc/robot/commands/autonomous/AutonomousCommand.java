@@ -39,7 +39,7 @@ public class AutonomousCommand extends SequentialCommandGroup {
         addCommands(new ParallelRaceGroup(new DrivetrainNoSensors(mDrivetrain, -0.75, 0.0), 
                                           new WaitCommand(1.0)),
                     new ParallelRaceGroup(new VisionTrackingAuto(mDrivetrain, mLimelight, mShooter),
-                                          new WaitCommand(6.0)),
+                                          new WaitCommand(5.0)),
                     new ParallelRaceGroup(new VisionTrackingAuto(mDrivetrain, mLimelight, mShooter),
                                           new RampSetState(mRamp, true),
                                           new WaitCommand(1.0)));
