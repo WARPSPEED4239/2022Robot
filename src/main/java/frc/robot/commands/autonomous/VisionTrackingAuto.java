@@ -34,6 +34,7 @@ public class VisionTrackingAuto extends CommandBase {
   @Override
   public void execute() {
     double tv = mLimelight.getTv();
+    SmartDashboard.putNumber("tv", tv);
 
     if (tv == 1) {
       double rotate;
