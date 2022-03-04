@@ -61,7 +61,7 @@ public class RobotContainer {
     targetChooser.setDefaultOption("Do Nothing", TargetTask.DoNothing);
 	//targetChooser.addOption("Move Off Tarmac", TargetTask.MoveOffTarmac);
 	targetChooser.addOption("Move Backwards No Sensors", TargetTask.DriveBackwardsNoSensors);
-	targetChooser.addOption("Shoot Move Backwards No Sensors", TargetTask.ShootDriveBackNoSensors);
+	targetChooser.addOption("Drive Backwards and Shoot", TargetTask.DriveBackAndShootNoSensors);
     SmartDashboard.putData(targetChooser);
 	
 	UsbCamera cam0 = CameraServer.startAutomaticCapture();

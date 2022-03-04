@@ -22,17 +22,15 @@ public class AutonomousCommand extends SequentialCommandGroup {
         break;
       case DriveBackwardsNoSensors:
         addCommands(new ParallelRaceGroup(new DrivetrainNoSensors(drivetrain, -0.75, 0.0), 
-                                          new WaitCommand(2.5)));
+                                          new WaitCommand(1.0)));
         break;
-      case ShootDriveBackNoSensors:
+      case DriveBackAndShootNoSensors:
         addCommands(new ParallelRaceGroup(new DrivetrainNoSensors(drivetrain, -0.75, 0.0), 
                                           new WaitCommand(1.0)),
                     new ParallelRaceGroup(new VisionTrackingAuto(drivetrain, limelight, shooter),
                                           new WaitCommand(2.5)),
                     new ParallelRaceGroup(new VisionTrackingAuto(drivetrain, limelight, shooter),
                                           new RampSetState(ramp, true),
-                                          new WaitCommand(1.0)),
-                    new ParallelRaceGroup(new DrivetrainNoSensors(drivetrain, -0.75, 0.0), 
                                           new WaitCommand(1.0)));
         break;
       case DoNothing:

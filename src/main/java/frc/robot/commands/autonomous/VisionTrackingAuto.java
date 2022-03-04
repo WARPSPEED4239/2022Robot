@@ -40,7 +40,7 @@ public class VisionTrackingAuto extends CommandBase {
       double rotate;
       double tx = mLimelight.getTx();
       double ty = mLimelight.getTy();
-      double distanceToGoal = ((kHeightOfGoalInches - kHeightOfLimelightInches) / (Math.tan(Math.toRadians(kAngleOfLimelightDegrees)  + Math.toRadians(ty)))); // TODO Maybe fix this calculation
+      double distanceToGoal = ((kHeightOfGoalInches - kHeightOfLimelightInches) / (Math.tan(Math.toRadians(kAngleOfLimelightDegrees)  + Math.toRadians(ty))));
       SmartDashboard.putNumber("distance", distanceToGoal);
 
       if (Math.abs(tx) < 0.5) {
