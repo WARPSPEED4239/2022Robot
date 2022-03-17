@@ -2,6 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -9,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ConveyorBeltSetSpeed;
+import frc.robot.commands.Dance;
 import frc.robot.commands.DrivetrainArcadeDrive;
 import frc.robot.commands.DrivetrainShifterSetState;
 import frc.robot.commands.FeederWheelsSetSpeed;
@@ -53,7 +55,7 @@ public class RobotContainer {
 
 	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
 	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
-	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, false));
+	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, true));
 	mLimelight.setDefaultCommand(new LimelightDriversMode(mLimelight));
 
     configureButtonBindings();
@@ -71,7 +73,7 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
 		JoystickButton xButtonA, xButtonB, xButtonX, xButtonY, xButtonLeftBumper, xButtonRightBumper, xButtonLeftStick,
-				xButtonRightStick;
+				xButtonRightStick, xButtonStart;
 		JoystickButton jButton1, jButton2, jButton3, jButton4, jButton5, jButton6, jButton7, jButton8, jButton9,
 				jButton10, jButton11;
 			JoystickButton joyButton1, joyButton2, joyButton3, joyButton4, joyButton5, joyButton6, joyButton7, joyButton8, joyButton9,
@@ -85,6 +87,7 @@ public class RobotContainer {
 		xButtonRightBumper = new JoystickButton(mController, 6);
 		xButtonLeftStick = new JoystickButton(mController, 9);
 		xButtonRightStick = new JoystickButton(mController, 10);
+		xButtonStart = new JoystickButton(mController, 8);
 
 		jButton1 = new JoystickButton(mJoystick, 1);
 		jButton2 = new JoystickButton(mJoystick, 2);
@@ -116,6 +119,8 @@ public class RobotContainer {
 		jButton5.whenPressed(new IntakePistonsSetState(mIntakePistons, false));
 		jButton6.whenPressed(new IntakePistonsSetState(mIntakePistons, true));
 
+		xButtonStart.whenHeld(new Dance(mDriveTrain, mIntakePistons));
+
 		// jButton7.whileHeld(new ClimberSetSpeed(mClimber, mJoystick, -1.0));
 		// jButton8.whileHeld(new ClimberSetSpeed(mClimber, mJoystick, 1.0));
 		// jButton12 is used to toggle manual control for vison tracking in VisionTracking.java
@@ -123,7 +128,6 @@ public class RobotContainer {
 
   public Command getAutonomousCommand() {
 	TargetTask targetTask = targetChooser.getSelected();
-
     return new AutonomousCommand(targetTask, mDriveTrain, mLimelight, mShooter, mRamp);
   }
 }
