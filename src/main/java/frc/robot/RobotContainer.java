@@ -54,7 +54,7 @@ public class RobotContainer {
 
 	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, true));
 	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
-	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, true));
+	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, false));
 	mLimelight.setDefaultCommand(new LimelightDriversMode(mLimelight));
 
     configureButtonBindings();

@@ -41,15 +41,15 @@ public class AutonomousCommand extends SequentialCommandGroup {
         break;
       case DriveBackwardsNoSensors:
         addCommands(new ParallelRaceGroup(new DrivetrainNoSensors(mDrivetrain, -0.75, 0.0),
-                                          new DrivetrainShifterSetState(shifter, false), 
+                                          new DrivetrainShifterSetState(shifter, true), 
                                           new WaitCommand(1.0)));
         break;
       case DriveBackAndShootNoSensors:
         addCommands(new ParallelRaceGroup(new DrivetrainNoSensors(mDrivetrain, -0.75, 0.18),
-                                          new DrivetrainShifterSetState(mDrivetrainShifter, false),
+                                          new DrivetrainShifterSetState(mDrivetrainShifter, true),
                                           new WaitCommand(1.0)),
                     new ParallelRaceGroup(new VisionTrackingAuto(mDrivetrain, mLimelight, mShooter),
-                                          new ConveyorBeltSetSpeed(mConveyorBelt, 0.4),
+                                          new ConveyorBeltSetSpeed(mConveyorBelt, -0.4),
                                           new WaitCommand(5.0)),
                     new ParallelRaceGroup(new VisionTrackingAuto(mDrivetrain, mLimelight, mShooter),
                                           new RampSetState(mRamp, true),
