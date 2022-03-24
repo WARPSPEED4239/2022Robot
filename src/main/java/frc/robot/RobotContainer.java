@@ -2,7 +2,6 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -10,7 +9,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ConveyorBeltSetSpeed;
-import frc.robot.commands.Dance;
 import frc.robot.commands.DrivetrainArcadeDrive;
 import frc.robot.commands.DrivetrainShifterSetState;
 import frc.robot.commands.FeederWheelsSetSpeed;
@@ -61,7 +59,6 @@ public class RobotContainer {
     configureButtonBindings();
 
     targetChooser.setDefaultOption("Do Nothing", TargetTask.DoNothing);
-	//targetChooser.addOption("Move Off Tarmac", TargetTask.MoveOffTarmac);
 	targetChooser.addOption("Move Backwards No Sensors", TargetTask.DriveBackwardsNoSensors);
 	targetChooser.addOption("Drive Backwards and Shoot", TargetTask.DriveBackAndShootNoSensors);
     SmartDashboard.putData(targetChooser);
@@ -118,8 +115,6 @@ public class RobotContainer {
 
 		jButton5.whenPressed(new IntakePistonsSetState(mIntakePistons, false));
 		jButton6.whenPressed(new IntakePistonsSetState(mIntakePistons, true));
-
-		xButtonStart.whenHeld(new Dance(mDriveTrain, mIntakePistons));
 
 		// jButton7.whileHeld(new ClimberSetSpeed(mClimber, mJoystick, -1.0));
 		// jButton8.whileHeld(new ClimberSetSpeed(mClimber, mJoystick, 1.0));
