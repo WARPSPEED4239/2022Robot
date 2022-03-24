@@ -1,6 +1,5 @@
 package frc.robot.commands.autonomous;
 
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.ParallelRaceGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
@@ -37,7 +36,7 @@ public class AutonomousCommand extends SequentialCommandGroup {
                                           new WaitCommand(1.0)));
         break;
       case DriveBackAndShootNoSensors:
-        addCommands(new ParallelRaceGroup(new DrivetrainNoSensors(mDrivetrain, -0.75, 0.0), 
+        addCommands(new ParallelRaceGroup(new DrivetrainNoSensors(mDrivetrain, -0.75, 0.07), 
                                           new WaitCommand(1.0)),
                     new ParallelRaceGroup(new VisionTrackingAuto(mDrivetrain, mLimelight, mShooter),
                                           new WaitCommand(5.0)),
