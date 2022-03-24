@@ -2,7 +2,6 @@ package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -53,7 +52,7 @@ public class RobotContainer {
 	mFeederWheels.setDefaultCommand(new FeederWheelsSetSpeed(mFeederWheels, 0.0));
 	mShooter.setDefaultCommand(new ShooterSetSpeedThrottle(mShooter, mJoystick));
 
-	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, false));
+	mIntakePistons.setDefaultCommand(new IntakePistonsSetState(mIntakePistons, true));
 	mRamp.setDefaultCommand(new RampSetState(mRamp, false));
 	mShifter.setDefaultCommand(new DrivetrainShifterSetState(mShifter, true));
 	mLimelight.setDefaultCommand(new LimelightDriversMode(mLimelight));
@@ -128,7 +127,7 @@ public class RobotContainer {
 
   public Command getAutonomousCommand() {
 	TargetTask targetTask = targetChooser.getSelected();
-    return new AutonomousCommand(targetTask, mDriveTrain, mLimelight, mShooter, mRamp, mIntake);
+    return new AutonomousCommand(targetTask, mConveyorBelt, mDriveTrain, mShifter, mLimelight, mShooter, mRamp);
   }
 }
 
