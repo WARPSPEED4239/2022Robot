@@ -128,7 +128,7 @@ public class RobotContainer {
 
   public Command getAutonomousCommand() {
 	TargetTask targetTask = targetChooser.getSelected();
-    return new AutonomousCommand(targetTask, mDriveTrain, mLimelight, mShooter, mRamp);
+    return new AutonomousCommand(targetTask, mDriveTrain, mLimelight, mShooter, mRamp, mIntake);
   }
 }
 
