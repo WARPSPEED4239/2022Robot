@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.ConveyorBeltSetSpeed;
-import frc.robot.commands.Dance;
 import frc.robot.commands.DrivetrainArcadeDrive;
 import frc.robot.commands.DrivetrainShifterSetState;
 import frc.robot.commands.FeederWheelsSetSpeed;
@@ -106,8 +105,8 @@ public class RobotContainer {
 		jButton1.whileHeld(new VisionTracking(mDriveTrain, mLimelight, mShooter, mController, mJoystick));
 		jButton2.whileHeld(new RampSetState(mRamp, true));
 
-    	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -0.55));
-		jButton4.whileHeld(new IntakeSetSpeed(mIntake, 0.55));
+    	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -0.4));
+		jButton4.whileHeld(new IntakeSetSpeed(mIntake, 0.4));
 
 		jButton3.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, -0.65));
 		jButton4.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, 0.65));
@@ -118,7 +117,6 @@ public class RobotContainer {
 		jButton5.whenPressed(new IntakePistonsSetState(mIntakePistons, false));
 		jButton6.whenPressed(new IntakePistonsSetState(mIntakePistons, true));
 
-		xButtonStart.whenHeld(new Dance(mDriveTrain, mIntakePistons));
 
 		// jButton7.whileHeld(new ClimberSetSpeed(mClimber, mJoystick, -1.0));
 		// jButton8.whileHeld(new ClimberSetSpeed(mClimber, mJoystick, 1.0));

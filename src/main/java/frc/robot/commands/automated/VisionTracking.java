@@ -16,7 +16,7 @@ public class VisionTracking extends CommandBase {
   private final XboxController mController;
   private final Joystick mJoystick;
 
-  private final double kPDrivetrain = 0.0335;
+  private final double kPDrivetrain = 0.034;
   private final double kHeightOfGoalInches = 103.0;
   private final double kHeightOfLimelightInches = 26.5;
   private final double kAngleOfLimelightDegrees = 28.77;

@@ -12,7 +12,7 @@ public class VisionTrackingAuto extends CommandBase {
   private final Limelight mLimelight;
   private final Shooter mShooter;
 
-  private final double kPDrivetrain = 0.09;
+  private final double kPDrivetrain = 0.05;
   private final double kHeightOfGoalInches = 103.0;
   private final double kHeightOfLimelightInches = 26.5;
   private final double kAngleOfLimelightDegrees = 28.77;
