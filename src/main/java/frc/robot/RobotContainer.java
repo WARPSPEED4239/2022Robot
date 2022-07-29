@@ -105,8 +105,8 @@ public class RobotContainer {
 		jButton1.whileHeld(new VisionTracking(mDriveTrain, mLimelight, mShooter, mController, mJoystick));
 		jButton2.whileHeld(new RampSetState(mRamp, true));
 
-    	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -0.4));
-		jButton4.whileHeld(new IntakeSetSpeed(mIntake, 0.4));
+    	jButton3.whileHeld(new IntakeSetSpeed(mIntake, -0.29));
+		jButton4.whileHeld(new IntakeSetSpeed(mIntake, 0.29));
 
 		jButton3.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, -0.65));
 		jButton4.whileHeld(new ConveyorBeltSetSpeed(mConveyorBelt, 0.65));
